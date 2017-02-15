@@ -209,7 +209,7 @@ JSONCodable  | 2.800 sec | 0.330 sec
 
 ####So what does this mean?
 
-When it comes to Decoding, ** Serpent** and **Freddy** are the fastest. When this test is run, sometimes Freddy is faster, sometimes Serpent is faster, but the difference is pretty negligible. 
+When it comes to Decoding, **Serpent** and **Freddy** are the fastest. When this test is run, sometimes Freddy is faster, sometimes Serpent is faster, but the difference is pretty negligible. 
 
 ##Encoding
 
@@ -232,5 +232,11 @@ Auto-generated code from Model Boiler|✔️|❌|❌|❌|❌
 **Best Performance**|✔️|✔️|❌|❌|❌
 
 
-##TL:DR
+##TL;DR
 Serpent is the fastest and most feature rich JSON encoder and decoder available. But don't take our word for it, try it out and see for yourself! And don't forget, we have the [![ModelBoiler](http://i.imgur.com/V5UzMVk.png)](https://github.com/nodes-ios/ModelBoiler) [Model Boiler](https://github.com/nodes-ios/ModelBoiler), which saves loads of time and makes your life much easier. 
+
+## 👥 Credits
+[Serpent](https://github.com/nodes-ios/Serpent) and the [Serpent Performance Comparison](https://github.com/nodes-ios/SerpentPerformanceComparison) were made with ❤️ at [Nodes](http://nodesagency.com).
+
+## 📄 License
+**Serpent Performance Comparison** is available under the MIT license. See the [LICENSE](https://github.com/nodes-ios/SerpentPerformanceComparison/blob/master/LICENSE) file for more info.
