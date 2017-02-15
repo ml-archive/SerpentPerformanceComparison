@@ -8,4 +8,4 @@ before_install:
   - carthage bootstrap --platform ios
 
 script:
-  - set -o pipefail && xcodebuild -project "SerpentComparison.xcodeproj" -scheme "SerpentComparison" -sdk "iphonesimulator10.2" -destination "OS=10.2,name=iPhone 7" -configuration Debug test | xcpretty;
+  - set -o pipefail && xcodebuild -project "SerpentComparison.xcodeproj" -scheme "SerpentComparison" -sdk "iphonesimulator10.2" -destination "OS=10.2,name=iPad Air 2" -configuration Debug test | xcpretty;
