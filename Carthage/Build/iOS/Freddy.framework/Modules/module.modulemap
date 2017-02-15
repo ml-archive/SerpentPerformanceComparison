@@ -1,0 +1,10 @@
+framework module Freddy {
+  umbrella header "Freddy.h"
+
+  export *
+  module * { export * }
+}
+
+module Freddy.Swift {
+    header "Freddy-Swift.h"
+}

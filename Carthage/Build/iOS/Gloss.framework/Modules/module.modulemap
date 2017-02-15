@@ -1,0 +1,10 @@
+framework module Gloss {
+  umbrella header "Gloss.h"
+
+  export *
+  module * { export * }
+}
+
+module Gloss.Swift {
+    header "Gloss-Swift.h"
+}
