@@ -1,6 +1,6 @@
 <p align="center"><img src="https://github.com/nodes-ios/Serpent/blob/master/Serpent_icon.png?raw=true" alt="Serpent"/></p>
 
-**Serpent** *(previously known as Serializable)* is a framework made by us at Nodes for creating model objects or structs that can be easily serialized and deserialized from/to JSON. It's easily expandable and handles all common data types used when consuming a REST API, as well as recursive parsing of custom objects.
+**[Serpent](https://github.com/nodes-ios/Serpent)** *(previously known as Serializable)* is a framework made by us at Nodes for creating model objects or structs that can be easily serialized and deserialized from/to JSON. It's easily expandable and handles all common data types used when consuming a REST API, as well as recursive parsing of custom objects.
 
 It's designed to be used together with our helper app, the [![ModelBoiler](http://i.imgur.com/V5UzMVk.png)](https://github.com/nodes-ios/ModelBoiler) [Model Boiler](https://github.com/nodes-ios/ModelBoiler), making model creation a breeze.
 

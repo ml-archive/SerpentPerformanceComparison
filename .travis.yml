@@ -5,7 +5,7 @@ branches:
     - master
 
 before_install:
-  - carthage bootstrap
+  - carthage bootstrap --platform ios
 
 script:
   - set -o pipefail && xcodebuild -project "SerpentComparison.xcodeproj" -scheme "SerpentComparison" -sdk "iphonesimulator10.1" -destination "OS=10.1,name=iPhone 6S Plus" -configuration Debug test | xcpretty;
