@@ -1,5 +1,5 @@
 language: swift
-osx_image: xcode8.1
+osx_image: xcode8.2
 branches:
   only:
     - master
@@ -8,4 +8,4 @@ before_install:
   - carthage bootstrap --platform ios
 
 script:
-  - set -o pipefail && xcodebuild -project "SerpentComparison.xcodeproj" -scheme "SerpentComparison" -sdk "iphonesimulator10.1" -destination "OS=10.1,name=iPhone 7" -configuration Debug test | xcpretty;
+  - set -o pipefail && xcodebuild -project "SerpentComparison.xcodeproj" -scheme "SerpentComparison" -sdk "iphonesimulator10.2" -destination "OS=10.2,name=iPhone 7" -configuration Debug test | xcpretty;
