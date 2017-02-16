@@ -10,7 +10,7 @@ It's designed to be used together with our helper app, the [![ModelBoiler](http:
 
 So how fast is Serpent? Why should I use Serpent instead of one of the many other Encoding/Decoding frameworks out there? What features does Serpent lack?
 
-*Lets find out!*
+*Let's find out!*
 
 **Note:** All of the following can be found in the [Performance Tests](https://github.com/nodes-ios/SerpentPerformanceComparison/blob/master/SerpentComparisonTests/SerpentComparisonTests.swift) in this repo. 
 
@@ -221,7 +221,7 @@ We're running those performance tests on CI too, so you can see the latest resul
 
 ####So what does this mean?
 
-When it comes to Decoding, **Serpent** and **Freddy** are the fastest. When this test is run, sometimes Freddy is faster, sometimes Serpent is faster, but the difference is pretty negligible. 
+When it comes to mapping, **Serpent** and **Freddy** are the fastest. When this test is run, sometimes Freddy is faster, sometimes Serpent is faster, but the difference is pretty negligible. 
 
 
 ##Feature Comparison
@@ -242,7 +242,7 @@ Auto-generated code from Model Boiler|✔️|❌|❌|❌|❌
 
 
 ##TL;DR
-Serpent is the fastest and most feature rich JSON encoder and decoder available. But don't take our word for it, try it out and see for yourself! And don't forget, we have the [![ModelBoiler](http://i.imgur.com/V5UzMVk.png)](https://github.com/nodes-ios/ModelBoiler) [Model Boiler](https://github.com/nodes-ios/ModelBoiler), which saves loads of time and makes your life much easier. 
+Serpent meets the best balance between speed and its number of features. But don't take our word for it, try it out and see for yourself! And don't forget, we have the [![ModelBoiler](http://i.imgur.com/V5UzMVk.png)](https://github.com/nodes-ios/ModelBoiler) [Model Boiler](https://github.com/nodes-ios/ModelBoiler), which saves loads of time and makes your life much easier. 
 
 ## Contributing
 

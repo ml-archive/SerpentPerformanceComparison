@@ -43,6 +43,46 @@ class SerpentComparisonTests: XCTestCase {
         }
     }
     
+    func testIfCorrect() {
+        // parse the small model with all the frameworks and test that the resulted struct has the same values and that they're the expected ones
+        
+        do {
+            self.jsonDict = try JSONSerialization.jsonObject(with: self.smallData as Data, options: .allowFragments) as? NSDictionary
+            
+            // serpent
+            let serpentParsedModel = PerformanceTestSmallModel.array(self.jsonDict["data"])
+            
+            // freddy
+            self.smallFreddyDict = try Freddy.JSON(data: self.smallData as Data)
+            let freddyParsedModel = try self.smallFreddyDict.getArray(at: "data").map(PerformanceTestSmallModel.init)
+            
+            // gloss
+            guard let objects = self.jsonDict["data"] as? [Gloss.JSON] else {
+                XCTFail("Gloss parsing failed")
+                return
+            }
+            let glossParsedModel = [PerformanceTestSmallModel].from(jsonArray: objects)
+            
+            // object mapper
+            let objectMapperParsedModel = Mapper<PerformanceTestSmallModel>().mapArray(JSONObject: self.jsonDict["data"])
+            
+            // jsoncodable
+            let jsonCodableParsedModel = try Array<PerformanceTestSmallModel>(JSONArray: self.jsonDict["data"] as! [[String: AnyObject]])
+            
+            
+            
+            let allParsedModelsAreTheSame = serpentParsedModel == freddyParsedModel && freddyParsedModel == glossParsedModel! && glossParsedModel! == objectMapperParsedModel! && objectMapperParsedModel! == jsonCodableParsedModel
+            let parsedModelIsDifferentThanDefaultValues = serpentParsedModel[1].id != "" && serpentParsedModel[1].name != ""
+            let firstParsedModelIsCorrect = serpentParsedModel[0].id == "56cf0c0c529c7a385b328947" && serpentParsedModel[0].name == "Jana"
+            
+            XCTAssert(allParsedModelsAreTheSame && parsedModelIsDifferentThanDefaultValues && firstParsedModelIsCorrect)
+        }
+        catch {
+            print(error)
+        }
+        
+        
+    }
     
     func testSerpentBig() {
         self.measure { () -> Void in
