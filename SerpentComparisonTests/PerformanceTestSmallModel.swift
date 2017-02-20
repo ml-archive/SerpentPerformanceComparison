@@ -18,12 +18,6 @@ struct PerformanceTestSmallModel {
 	var name = ""
 }
 
-extension PerformanceTestSmallModel : Equatable {
-    static func ==(lhs: PerformanceTestSmallModel, rhs: PerformanceTestSmallModel) -> Bool {
-        return lhs.id == rhs.id && lhs.name == rhs.name
-    }
-}
-
 
 // Serpent
 extension PerformanceTestSmallModel: Serializable {
