@@ -13,6 +13,12 @@ import ObjectMapper
 import Serpent
 @testable import SerpentComparison
 
+extension PerformanceTestSmallModel : Equatable {
+    static func ==(lhs: PerformanceTestSmallModel, rhs: PerformanceTestSmallModel) -> Bool {
+        return lhs.id == rhs.id && lhs.name == rhs.name
+    }
+}
+
 class SerpentComparisonTests: XCTestCase {
     
     var largeData: NSData!
