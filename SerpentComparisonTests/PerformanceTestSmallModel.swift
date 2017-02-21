@@ -12,6 +12,7 @@ import Freddy
 import Gloss
 import ObjectMapper
 import JSONCodable
+import Unbox
 
 struct PerformanceTestSmallModel {	
 	var id = ""
@@ -76,4 +77,16 @@ extension PerformanceTestSmallModel: JSONCodable {
 		id = try decoder.decode("id")
 		name = try decoder.decode("name")
 	}
+}
+
+
+
+// Unbox
+
+extension PerformanceTestSmallModel: Unboxable {
+    init(unboxer: Unboxer) throws {
+        
+        id = try unboxer.unbox(key: "id")
+        name = try unboxer.unbox(key: "name")
+    }
 }

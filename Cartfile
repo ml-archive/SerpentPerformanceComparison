@@ -3,3 +3,4 @@ github "Hearst-DD/ObjectMapper" ~> 2.2.2
 github "hkellaway/Gloss" ~> 1.2.1
 github "matthewcheok/JSONCodable" ~> 3.0.1
 github "nodes-ios/Serpent" ~> 1.0.4
+github "johnsundell/unbox" ~> 2.4.0

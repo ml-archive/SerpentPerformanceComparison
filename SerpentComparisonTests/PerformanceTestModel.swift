@@ -12,6 +12,7 @@ import Freddy
 import Gloss
 import ObjectMapper
 import JSONCodable
+import Unbox
 
 
 struct PerformanceTestModel {
@@ -264,4 +265,42 @@ extension Name: JSONCodable {
 		
 	}
 }
+
+
+// Unbox
+
+extension PerformanceTestModel: Unboxable {
+    init(unboxer: Unboxer) throws {
+        
+        id = try unboxer.unbox(key: "id")
+        index = try unboxer.unbox(key: "index")
+        guid = try unboxer.unbox(key: "guid")
+        isActive = try unboxer.unbox(key: "isActive")
+        balance = try unboxer.unbox(key: "balance")
+        //		picture = try unboxer.unbox(key: "picture")
+        age = try unboxer.unbox(key: "age")
+        //		eyeColor = try unboxer.unbox(key: "eyeColor")
+        name = try unboxer.unbox(key: "name")
+        company = try unboxer.unbox(key: "company")
+        email = try unboxer.unbox(key: "email")
+        phone = try unboxer.unbox(key: "phone")
+        address = try unboxer.unbox(key: "address")
+        about = try unboxer.unbox(key: "about")
+        registered = try unboxer.unbox(key: "registered")
+        //		latitude = try unboxer.unbox(key: "latitude")
+        //		longitude = try unboxer.unbox(key: "longitude")
+        greeting = try unboxer.unbox(key: "greeting")
+        //		favoriteFruit = try unboxer.unbox(key: "favoriteFruit")
+    }
+}
+
+extension Name: Unboxable {
+    init(unboxer: Unboxer) throws {
+        
+        first = try unboxer.unbox(key: "first")
+        last = try unboxer.unbox(key: "last")
+        
+    }
+}
+
 

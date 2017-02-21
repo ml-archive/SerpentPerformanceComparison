@@ -32,6 +32,7 @@
 		290F31EE1E5460DE007AFEB7 /* PerformanceTest.json in Resources */ = {isa = PBXBuildFile; fileRef = 290F31EA1E5460DE007AFEB7 /* PerformanceTest.json */; };
 		290F31EF1E5460DE007AFEB7 /* PerformanceTestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290F31EB1E5460DE007AFEB7 /* PerformanceTestModel.swift */; };
 		290F31F01E5460DE007AFEB7 /* PerformanceTestSmallModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290F31EC1E5460DE007AFEB7 /* PerformanceTestSmallModel.swift */; };
+		29E5B0061E5C52A700F6DBC6 /* Unbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29E5B0051E5C52A700F6DBC6 /* Unbox.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		290F31EA1E5460DE007AFEB7 /* PerformanceTest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PerformanceTest.json; sourceTree = "<group>"; };
 		290F31EB1E5460DE007AFEB7 /* PerformanceTestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformanceTestModel.swift; sourceTree = "<group>"; };
 		290F31EC1E5460DE007AFEB7 /* PerformanceTestSmallModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformanceTestSmallModel.swift; sourceTree = "<group>"; };
+		29E5B0051E5C52A700F6DBC6 /* Unbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Unbox.framework; path = Carthage/Build/iOS/Unbox.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 				290F31DF1E545FA6007AFEB7 /* JSONCodable.framework in Frameworks */,
 				290F31E01E545FA6007AFEB7 /* ObjectMapper.framework in Frameworks */,
 				290F31E11E545FA6007AFEB7 /* Serpent.framework in Frameworks */,
+				29E5B0061E5C52A700F6DBC6 /* Unbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +150,7 @@
 		290F31B51E545C07007AFEB7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				29E5B0051E5C52A700F6DBC6 /* Unbox.framework */,
 				290F31B61E545C07007AFEB7 /* Alamofire.framework */,
 				290F31B71E545C07007AFEB7 /* Cashier.framework */,
 				290F31B81E545C07007AFEB7 /* Freddy.framework */,
@@ -285,6 +289,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/JSONCodable.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ObjectMapper.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Serpent.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Unbox.framework",
 			);
 			name = "Carthage fix";
 			outputPaths = (

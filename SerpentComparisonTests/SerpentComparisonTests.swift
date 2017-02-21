@@ -11,6 +11,7 @@ import Freddy
 import Gloss
 import ObjectMapper
 import Serpent
+import Unbox
 @testable import SerpentComparison
 
 extension PerformanceTestSmallModel : Equatable {
@@ -39,6 +40,9 @@ class SerpentComparisonTests: XCTestCase {
     var jsonCodableDict: [String: AnyObject]!
     var jsonCodableSmallDict: [String: AnyObject]!
     
+    var unboxDict: [String : AnyObject]!
+    var unboxSmallDict: [String : AnyObject]!
+    
     override func setUp() {
         super.setUp()
         if let path = Bundle(for: type(of: self)).path(forResource: "PerformanceTest", ofType: "json"), let data = NSData(contentsOfFile: path) {
@@ -49,7 +53,8 @@ class SerpentComparisonTests: XCTestCase {
         }
     }
     
-    func testIfCorrect() {
+    // Apparently, Xcode runs the test in alphabetical order. We want the correctness test to be first so the performance results can be easily seen afterwards. Hence, the ugly naming style
+    func test_correctness() {
         // parse the small model with all the frameworks and test that the resulted struct has the same values and that they're the expected ones
         
         do {
@@ -75,9 +80,13 @@ class SerpentComparisonTests: XCTestCase {
             // jsoncodable
             let jsonCodableParsedModel = try Array<PerformanceTestSmallModel>(JSONArray: self.jsonDict["data"] as! [[String: AnyObject]])
             
+            // unbox
+            let unboxParsedModel : [PerformanceTestSmallModel] = try unbox(dictionaries: self.jsonDict["data"] as! [[String : AnyObject]])
             
             
-            let allParsedModelsAreTheSame = serpentParsedModel == freddyParsedModel && freddyParsedModel == glossParsedModel! && glossParsedModel! == objectMapperParsedModel! && objectMapperParsedModel! == jsonCodableParsedModel
+            // make sure you add a check here for the newly added mapping frameworks
+            let allParsedModelsAreTheSame = serpentParsedModel == freddyParsedModel && freddyParsedModel == glossParsedModel! && glossParsedModel! == objectMapperParsedModel! && objectMapperParsedModel! == jsonCodableParsedModel && jsonCodableParsedModel == unboxParsedModel
+            
             let parsedModelIsDifferentThanDefaultValues = serpentParsedModel[1].id != "" && serpentParsedModel[1].name != ""
             let firstParsedModelIsCorrect = serpentParsedModel[0].id == "56cf0c0c529c7a385b328947" && serpentParsedModel[0].name == "Jana"
             
@@ -207,6 +216,31 @@ class SerpentComparisonTests: XCTestCase {
             do {
                 self.jsonCodableSmallDict = try JSONSerialization.jsonObject(with: self.smallData as Data, options: .allowFragments) as? [String: AnyObject]
                 let _ = try Array<PerformanceTestSmallModel>(JSONArray: self.jsonCodableSmallDict["data"] as! [[String: AnyObject]])
+                
+            }
+            catch {
+                print(error)
+            }
+        }
+    }
+    
+    func testUnboxBig() {
+        self.measure {
+            do {
+                self.unboxDict = try JSONSerialization.jsonObject(with: self.largeData as Data, options: .allowFragments) as? [String: Any] as [String : AnyObject]!
+                let _ : [PerformanceTestModel] = try unbox(dictionaries: self.unboxDict["data"] as! [[String : AnyObject]])
+            }
+            catch {
+                print(error)
+            }
+        }
+    }
+    
+    func testUnboxSmall() {
+        self.measure {
+            do {
+                self.unboxSmallDict = try JSONSerialization.jsonObject(with: self.smallData as Data, options: .allowFragments) as? [String: AnyObject]
+                let _ : [PerformanceTestSmallModel] = try unbox(dictionaries: self.unboxSmallDict["data"] as! [[String : AnyObject]])
                 
             }
             catch {
