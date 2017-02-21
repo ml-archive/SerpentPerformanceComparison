@@ -197,12 +197,13 @@ Serpent Small Model | 0.059 sec
 
 Not too bad for 10,000 objects. 
 
-But how does it compare to other frameworks? We looked at 4 other popular frameworks to compare our results:
+But how does it compare to other frameworks? We looked at 5 other popular frameworks to compare our results:
 
 - [Freddy](https://github.com/bignerdranch/Freddy)
 - [Gloss](https://github.com/hkellaway/Gloss)
 - [ObjectMapper](https://github.com/Hearst-DD/ObjectMapper)
 - [JSONCodable](https://github.com/matthewcheok/JSONCodable)
+- [Unbox](https://github.com/JohnSundell/Unbox)
 
 Before we can compare results, we have a few issues to resolve. Freddy only supports primitive types and collections, so no `Enum`, `NSURL`, or odd cases (such as the latitude and longitude fields, which are `String` in the JSON but `Double` in our model). JSONCodable and ObjectMapper can't handle the `NSURL`. So to be fair, we'll remove those properties from the test. 
 
@@ -210,12 +211,15 @@ Before we can compare results, we have a few issues to resolve. Freddy only supp
 
 Test | Large Model | Small Model
 ---|---|---
-Serpent | 0.424 sec | 0.059 sec
-Freddy       | 0.419 sec | 0.055 sec
-Gloss        | 1.775 sec | 0.248 sec
-ObjectMapper | 1.190 sec | 0.196 sec
-JSONCodable  | 2.800 sec | 0.330 sec
+Serpent 		| 0.507 sec | 0.056 sec
+Freddy       | 0.463 sec | 0.055 sec
+Gloss        | 1.527 sec | 0.243 sec
+ObjectMapper | 1.453 sec | 0.224 sec
+JSONCodable  | 2.905 sec | 0.363 sec
+Unbox		   | 2.064 sec | 0.243 sec
 
+*The tests were last run locally on 21 February 2017.*
+ 
 We're running those performance tests on CI too, so you can see the latest results on [Travis-CI](https://travis-ci.org/nodes-ios/SerpentPerformanceComparison)
 
 
@@ -228,17 +232,17 @@ When it comes to mapping, **Serpent** and **Freddy** are the fastest. When this 
 
 So you've seen the performance tests, but what about features? 
 
- | Serpent | Freddy | Gloss | ObjectMapper | JSONCodable
----|---|---|---|---|---
-Parses primitive types|✔️|✔️|✔️|✔️|✔️
-Parses nested objects|✔️|✔️|✔️|✔️|✔️
-Parses Enum types|✔️|❌|✔️|✔️|✔️
-Parses other types (e.g. NSURL, UIColor)|✔️|❌|✔️|❌|❌
-Easy protocol conformance syntax with custom operator|✔️|❌|✔️|✔️|❌
-Flexible mapping function without complicated generics syntax or casting|✔️|✔️|❌|❌|❌
-Decodes without needing to handle errors|✔️|❌|✔️|✔️|❌
-Auto-generated code from Model Boiler|✔️|❌|❌|❌|❌
-**Best Performance**|✔️|✔️|❌|❌|❌
+ | Serpent | Freddy | Gloss | ObjectMapper | JSONCodable | Unbox
+---|---|---|---|---|---|---|
+Parses primitive types|✔️|✔️|✔️|✔️|✔️|✔️
+Parses nested objects|✔️|✔️|✔️|✔️|✔️|✔️
+Parses Enum types|✔️|❌|✔️|✔️|✔️|✔️
+Parses other types (e.g. NSURL, UIColor)|✔️|❌|✔️|❌|❌|✔️
+Easy protocol conformance syntax with custom operator|✔️|❌|✔️|✔️|❌|❌
+Flexible mapping function without complicated generics syntax or casting|✔️|✔️|❌|❌|❌|✔️
+Decodes without needing to handle errors|✔️|❌|✔️|✔️|❌|✔️
+Auto-generated code from Model Boiler|✔️|❌|❌|❌|❌|❌
+**Best Performance**|✔️|✔️|❌|❌|❌|❌
 
 
 ##TL;DR
@@ -253,6 +257,7 @@ In order to be merged, a PR that adds a new JSON mapping framework:
 - must add the new framework via Carthage
 - must not break any of the other framework's usage implementation
 - must add performance tests that use the same data as the others (it's ok to add new json data for testing as long as you run the same tests for all the frameworks)
+- must edit the correctness test to test that the parsing is correct for the new mapping framework added
 - must not break the CI build
 
 We want those tests to be as fair as possible and to have the same conditions for all the frameworks that we test.  
