@@ -187,12 +187,12 @@ func testSerpentBig() {
 
 ## The Results
 
-**Note:** All of these tests are run using the iPhone SE simulator after a clean build, on a MacBook Pro Retina, 15-inch, Mid 2014, with a 2,8 GHz Intel Core i7 Processor and 16 GB RAM.
+**Note:** All of these tests are run on an iPhone 6S after a clean build.
 
 Test | Result
 ---|---
-Serpent Large Model | 0.424 sec
-Serpent Small Model | 0.059 sec
+Serpent Large Model | 0.692 sec
+Serpent Small Model | 0.084 sec
 
 
 Not too bad for 10,000 objects. 
@@ -211,14 +211,14 @@ Before we can compare results, we have a few issues to resolve. Freddy only supp
 
 Test | Large Model | Small Model
 ---|---|---
-Serpent 		| 0.507 sec | 0.056 sec
-Freddy       | 0.463 sec | 0.055 sec
-Gloss        | 1.527 sec | 0.243 sec
-ObjectMapper | 1.453 sec | 0.224 sec
-JSONCodable  | 2.905 sec | 0.363 sec
-Unbox		   | 2.064 sec | 0.243 sec
+Serpent 		| 0.692 sec | 0.084 sec
+Freddy       | 0.670 sec | 0.093 sec
+Gloss        | 2.750 sec | 0.365 sec
+ObjectMapper | 2.353 sec | 0.351 sec
+JSONCodable  | 4.615 sec | 0.549 sec
+Unbox		   | 3.292 sec | 0.359 sec
 
-*The tests were last run locally on 21 February 2017.*
+*The tests were last run locally on device on 22 February 2017.*
  
 We're running those performance tests on CI too, so you can see the latest results on [Travis-CI](https://travis-ci.org/nodes-ios/SerpentPerformanceComparison)
 
