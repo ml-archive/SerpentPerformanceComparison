@@ -32,6 +32,11 @@
 		290F31EE1E5460DE007AFEB7 /* PerformanceTest.json in Resources */ = {isa = PBXBuildFile; fileRef = 290F31EA1E5460DE007AFEB7 /* PerformanceTest.json */; };
 		290F31EF1E5460DE007AFEB7 /* PerformanceTestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290F31EB1E5460DE007AFEB7 /* PerformanceTestModel.swift */; };
 		290F31F01E5460DE007AFEB7 /* PerformanceTestSmallModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290F31EC1E5460DE007AFEB7 /* PerformanceTestSmallModel.swift */; };
+		2966647F1E5DD737005E0B4D /* Decodable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2966647E1E5DD737005E0B4D /* Decodable.framework */; };
+		296664801E5DD780005E0B4D /* Unbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29E5B0051E5C52A700F6DBC6 /* Unbox.framework */; };
+		296664811E5DD783005E0B4D /* Decodable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2966647E1E5DD737005E0B4D /* Decodable.framework */; };
+		296664831E5DDA1B005E0B4D /* PerformanceTestModel+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296664821E5DDA1B005E0B4D /* PerformanceTestModel+Decodable.swift */; };
+		296664851E5DDB95005E0B4D /* PerformanceTestSmallModel+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296664841E5DDB95005E0B4D /* PerformanceTestSmallModel+Decodable.swift */; };
 		29E5B0061E5C52A700F6DBC6 /* Unbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29E5B0051E5C52A700F6DBC6 /* Unbox.framework */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +73,9 @@
 		290F31EA1E5460DE007AFEB7 /* PerformanceTest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PerformanceTest.json; sourceTree = "<group>"; };
 		290F31EB1E5460DE007AFEB7 /* PerformanceTestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformanceTestModel.swift; sourceTree = "<group>"; };
 		290F31EC1E5460DE007AFEB7 /* PerformanceTestSmallModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformanceTestSmallModel.swift; sourceTree = "<group>"; };
+		2966647E1E5DD737005E0B4D /* Decodable.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Decodable.framework; path = Carthage/Build/iOS/Decodable.framework; sourceTree = "<group>"; };
+		296664821E5DDA1B005E0B4D /* PerformanceTestModel+Decodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PerformanceTestModel+Decodable.swift"; sourceTree = "<group>"; };
+		296664841E5DDB95005E0B4D /* PerformanceTestSmallModel+Decodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PerformanceTestSmallModel+Decodable.swift"; sourceTree = "<group>"; };
 		29E5B0051E5C52A700F6DBC6 /* Unbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Unbox.framework; path = Carthage/Build/iOS/Unbox.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,6 +86,7 @@
 			files = (
 				290F31DB1E545FA6007AFEB7 /* Alamofire.framework in Frameworks */,
 				290F31DC1E545FA6007AFEB7 /* Cashier.framework in Frameworks */,
+				2966647F1E5DD737005E0B4D /* Decodable.framework in Frameworks */,
 				290F31DD1E545FA6007AFEB7 /* Freddy.framework in Frameworks */,
 				290F31DE1E545FA6007AFEB7 /* Gloss.framework in Frameworks */,
 				290F31DF1E545FA6007AFEB7 /* JSONCodable.framework in Frameworks */,
@@ -98,6 +107,8 @@
 				290F31E41E546035007AFEB7 /* Freddy.framework in Frameworks */,
 				290F31E21E546030007AFEB7 /* Alamofire.framework in Frameworks */,
 				290F31E51E546038007AFEB7 /* Gloss.framework in Frameworks */,
+				296664801E5DD780005E0B4D /* Unbox.framework in Frameworks */,
+				296664811E5DD783005E0B4D /* Decodable.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,6 +161,7 @@
 		290F31B51E545C07007AFEB7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2966647E1E5DD737005E0B4D /* Decodable.framework */,
 				29E5B0051E5C52A700F6DBC6 /* Unbox.framework */,
 				290F31B61E545C07007AFEB7 /* Alamofire.framework */,
 				290F31B71E545C07007AFEB7 /* Cashier.framework */,
@@ -169,6 +181,8 @@
 				290F31EA1E5460DE007AFEB7 /* PerformanceTest.json */,
 				290F31EB1E5460DE007AFEB7 /* PerformanceTestModel.swift */,
 				290F31EC1E5460DE007AFEB7 /* PerformanceTestSmallModel.swift */,
+				296664821E5DDA1B005E0B4D /* PerformanceTestModel+Decodable.swift */,
+				296664841E5DDB95005E0B4D /* PerformanceTestSmallModel+Decodable.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -292,6 +306,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/ObjectMapper.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Serpent.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Unbox.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Decodable.framework",
 			);
 			name = "Carthage fix";
 			outputPaths = (
@@ -316,6 +331,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				296664851E5DDB95005E0B4D /* PerformanceTestSmallModel+Decodable.swift in Sources */,
+				296664831E5DDA1B005E0B4D /* PerformanceTestModel+Decodable.swift in Sources */,
 				290F31EF1E5460DE007AFEB7 /* PerformanceTestModel.swift in Sources */,
 				290F31F01E5460DE007AFEB7 /* PerformanceTestSmallModel.swift in Sources */,
 				290F31A91E545909007AFEB7 /* SerpentComparisonTests.swift in Sources */,
