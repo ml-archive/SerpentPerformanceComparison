@@ -1,6 +1,6 @@
 <p align="center"><img src="https://github.com/nodes-ios/Serpent/blob/master/Serpent_icon.png?raw=true" alt="Serpent"/></p>
 
-**[Serpent](https://github.com/nodes-ios/Serpent)** *(previously known as Serializable)* is a framework made by us at Nodes for creating model objects or structs that can be easily serialized and deserialized from/to JSON. 
+**🐍 [Serpent](https://github.com/nodes-ios/Serpent)** *(previously known as Serializable)* is a framework made by us at [Nodes](https://nodesagency.com) for creating model objects or structs that can be easily serialized and deserialized from/to JSON. 
 
 It's designed to be used together with our helper app, the [![ModelBoiler](http://i.imgur.com/V5UzMVk.png)](https://github.com/nodes-ios/ModelBoiler) [Model Boiler](https://github.com/nodes-ios/ModelBoiler), making model creation a breeze.
 
@@ -12,11 +12,11 @@ It's designed to be used together with our helper app, the [![ModelBoiler](http:
 
 So how fast is Serpent? Why should I use Serpent instead of one of the many other Encoding/Decoding frameworks out there? What features does Serpent lack?
 
-*Let's find out!* (or, you can [skip to the results](#the-results))
+*Let's find out!* (or, you can [skip to the results](#📊-the-results))
 
 **Note:** All of the following can be found in the [Performance Tests](https://github.com/nodes-ios/SerpentPerformanceComparison/blob/master/SerpentComparisonTests/SerpentComparisonTests.swift) in this repo. 
 
-## The Data
+## 📜 The Data
 We need something big to test. Parsing a small 10-line JSON object doesn't help illustrate performance. So let's see how it does with an object like this: 
 
 ~~~
@@ -61,7 +61,7 @@ Let's also test 10,000 of a smaller object as well, to see how that impacts perf
 [This file](https://github.com/nodes-ios/SerpentPerformanceComparison/blob/master/SerpentComparisonTests/PerformanceSmallTest.json) is only 6% of the bigger file's size.
 
 
-## The Models
+## 💿 The Models
 
 So let's create our models now. We want to make the data as useful as possible, so we should use the appropriate data types when possible (not just using `String` for everything). 
 
@@ -113,7 +113,7 @@ struct PerformanceTestSmallModel {
 Serpent doesn't care if you use implicit or explicit types, so it is only added when needed (for `Enum`, nested types, or optionals, for example). Also, we could of course use optionals for these fields instead of default values (`favoriteFruit` vs. `eyeColor`, for example). 
 
 
-## The Tests
+## 📏 The Tests
 
 So now we want to parse the JSON into this model. With Serpent, this is done by conforming to `Decodable` and implementing `init(dictionary:NSDictionary?)` (all done automatically in a split-second if you use our [![ModelBoiler](http://i.imgur.com/V5UzMVk.png)](https://github.com/nodes-ios/ModelBoiler) [Model Boiler](https://github.com/nodes-ios/ModelBoiler)): 
 
@@ -187,7 +187,7 @@ func testSerpentBig() {
     }
 ~~~
 
-## The Results
+## 📊 The Results
 
 **Note:** All of these tests are run on an iPhone 6S after a clean build.
 
@@ -229,7 +229,7 @@ Here's a chart with the results from the tests ran on an iPhone 6S after a clean
 When it comes to mapping, **Serpent** and **Freddy** are the fastest. When this test is run, sometimes Freddy is faster, sometimes Serpent is faster, but the difference is pretty negligible. 
 
 
-## Feature Comparison
+## 📈 Feature Comparison
 
 So you've seen the performance tests, but what about features? 
 
@@ -246,10 +246,10 @@ Auto-generated code from Model Boiler|✔️|❌|❌|❌|❌|❌|❌
 **Best Performance**|✔️|✔️|❌|❌|❌|❌|❌
 
 
-## TL;DR
+## 🏷 TL;DR
 Serpent meets the best balance between speed and its number of features. But don't take our word for it, try it out and see for yourself! And don't forget, we have the [![ModelBoiler](http://i.imgur.com/V5UzMVk.png)](https://github.com/nodes-ios/ModelBoiler) [Model Boiler](https://github.com/nodes-ios/ModelBoiler), which saves loads of time and makes your life much easier. 
 
-## Contributing
+## 💪 Contributing
 
 We know there are other JSON mapping frameworks out there. We would like to add more of them to this comparison, so its results are even more reflective of the current JSON mapping framework environment. However, we don't have a specific timeline for adding more libraries. We gladly accept Pull Requests to this repo that add other frameworks for the comparison. 
 
