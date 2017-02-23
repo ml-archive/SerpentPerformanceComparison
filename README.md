@@ -10,7 +10,7 @@ It's designed to be used together with our helper app, the [![ModelBoiler](http:
 
 So how fast is Serpent? Why should I use Serpent instead of one of the many other Encoding/Decoding frameworks out there? What features does Serpent lack?
 
-*Let's find out!*
+*Let's find out!* (or, you can [skip to the results](#the-results))
 
 **Note:** All of the following can be found in the [Performance Tests](https://github.com/nodes-ios/SerpentPerformanceComparison/blob/master/SerpentComparisonTests/SerpentComparisonTests.swift) in this repo. 
 
@@ -197,16 +197,9 @@ Serpent Small Model | 0.084 sec
 
 Not too bad for 10,000 objects. 
 
-But how does it compare to other frameworks? We looked at 5 other popular frameworks to compare our results:
+But how does it compare to other frameworks? We looked at 6 other popular frameworks to compare our results: [Freddy](https://github.com/bignerdranch/Freddy), [Gloss](https://github.com/hkellaway/Gloss), [ObjectMapper](https://github.com/Hearst-DD/ObjectMapper), [JSONCodable](https://github.com/matthewcheok/JSONCodable), [Unbox](https://github.com/JohnSundell/Unbox), [Decodable](https://github.com/Anviking/Decodable).
 
-- [Freddy](https://github.com/bignerdranch/Freddy)
-- [Gloss](https://github.com/hkellaway/Gloss)
-- [ObjectMapper](https://github.com/Hearst-DD/ObjectMapper)
-- [JSONCodable](https://github.com/matthewcheok/JSONCodable)
-- [Unbox](https://github.com/JohnSundell/Unbox)
-- [Decodable](https://github.com/Anviking/Decodable)
-
-Before we can compare results, we have a few issues to resolve. Freddy only supports primitive types and collections, so no `Enum`, `NSURL`, or odd cases (such as the latitude and longitude fields, which are `String` in the JSON but `Double` in our model). JSONCodable and ObjectMapper can't handle the `NSURL`. So to be fair, we'll remove those properties from the test. 
+Before we can compare results, we have a few issues to resolve. Freddy only supports primitive types and collections, so no `Enum`, `NSURL`, or odd cases (such as the latitude and longitude fields, which are `String` in the JSON but `Double` in our model). Others can't handle the `NSURL`. So to be fair, we'll remove those properties from the test. 
 
 **Note:** If you're curious about the usage of the other frameworks, you can have a look at [the test file](https://github.com/nodes-ios/SerpentPerformanceComparison/blob/master/SerpentComparisonTests/SerpentComparisonTests.swift). 
 
@@ -223,6 +216,10 @@ Decodable	   | 1.629 sec | 0.223 sec
 *The tests were last run locally on device on 22 February 2017.*
  
 We're running those performance tests on CI too, so you can see the latest results on [Travis-CI](https://travis-ci.org/nodes-ios/SerpentPerformanceComparison). The times on Travis are different, but the general picture is the same. 
+
+Here's a chart with the results fromt he tests ran on an iPhone 6S after a clean build on 22 February 2017. Lower is better.
+
+![Results chart](chart.png)
 
 
 #### So what does this mean?
