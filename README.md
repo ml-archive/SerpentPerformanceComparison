@@ -265,6 +265,13 @@ We want those tests to be as fair as possible and to have the same conditions fo
 
 We reserve the right to close issues that only say "Please add `<insert_mapping_framework_name_here>` to your tests", without a PR that adds that library. We don't want the [issues](https://github.com/nodes-ios/SerpentPerformanceComparison/issues) of this repo to turn into a list of all the JSON mapping frameworks available. But we're very happy for pull requests 🤓
 
+#### Running this locally
+1. Clone the repo
+2. Run `carthage bootstrap --platform ios` (If you don't have Carthage installed, you can [install it like this](https://github.com/Carthage/Carthage#installing-carthage))
+3. Open the project in Xcode
+4. Run the tests (Product -> Test, or ⌘-U)
+5. See the results in the debug console
+
 ## 👥 Credits
 [Serpent](https://github.com/nodes-ios/Serpent), [![ModelBoiler](http://i.imgur.com/V5UzMVk.png)](https://github.com/nodes-ios/ModelBoiler) [Model Boiler](https://github.com/nodes-ios/ModelBoiler) and the [Serpent Performance Comparison](https://github.com/nodes-ios/SerpentPerformanceComparison) were made with ❤️ at [Nodes](http://nodesagency.com).
 

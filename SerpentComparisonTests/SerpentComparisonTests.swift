@@ -26,27 +26,6 @@ class SerpentComparisonTests: XCTestCase {
     var largeData: NSData!
     var smallData: NSData!
     
-    var jsonDict: NSDictionary!
-    var smallJsonDict: NSDictionary!
-    
-    var freddyDict: Freddy.JSON!
-    var smallFreddyDict: Freddy.JSON!
-    
-    var glossDict: Gloss.JSON!
-    var smallGlossDict: Gloss.JSON!
-    
-    var objectMapperDict: NSDictionary!
-    var objectMapperSmallDict: NSDictionary!
-    
-    var jsonCodableDict: [String: AnyObject]!
-    var jsonCodableSmallDict: [String: AnyObject]!
-    
-    var unboxDict: [String : AnyObject]!
-    var unboxSmallDict: [String : AnyObject]!
-    
-    var decodableDict: [String : AnyObject]!
-    var decodableSmallDict: [String : AnyObject]!
-    
     override func setUp() {
         super.setUp()
         if let path = Bundle(for: type(of: self)).path(forResource: "PerformanceTest", ofType: "json"), let data = NSData(contentsOfFile: path) {
@@ -62,33 +41,33 @@ class SerpentComparisonTests: XCTestCase {
         // parse the small model with all the frameworks and test that the resulted struct has the same values and that they're the expected ones
         
         do {
-            self.jsonDict = try JSONSerialization.jsonObject(with: self.smallData as Data, options: .allowFragments) as? NSDictionary
+            let jsonDict = try JSONSerialization.jsonObject(with: self.smallData as Data, options: .allowFragments) as! NSDictionary
             
             // serpent
-            let serpentParsedModel = PerformanceTestSmallModel.array(self.jsonDict["data"])
+            let serpentParsedModel = PerformanceTestSmallModel.array(jsonDict["data"])
             
             // freddy
-            self.smallFreddyDict = try Freddy.JSON(data: self.smallData as Data)
-            let freddyParsedModel = try self.smallFreddyDict.getArray(at: "data").map(PerformanceTestSmallModel.init)
+            let smallFreddyDict = try Freddy.JSON(data: smallData as Data)
+            let freddyParsedModel = try smallFreddyDict.getArray(at: "data").map(PerformanceTestSmallModel.init)
             
             // gloss
-            guard let objects = self.jsonDict["data"] as? [Gloss.JSON] else {
+            guard let objects = jsonDict["data"] as? [Gloss.JSON] else {
                 XCTFail("Gloss parsing failed")
                 return
             }
             let glossParsedModel = [PerformanceTestSmallModel].from(jsonArray: objects)
             
             // object mapper
-            let objectMapperParsedModel = Mapper<PerformanceTestSmallModel>().mapArray(JSONObject: self.jsonDict["data"])
+            let objectMapperParsedModel = Mapper<PerformanceTestSmallModel>().mapArray(JSONObject: jsonDict["data"])
             
             // jsoncodable
-            let jsonCodableParsedModel = try Array<PerformanceTestSmallModel>(JSONArray: self.jsonDict["data"] as! [[String: AnyObject]])
+            let jsonCodableParsedModel = try Array<PerformanceTestSmallModel>(JSONArray: jsonDict["data"] as! [[String: AnyObject]])
             
             // unbox
-            let unboxParsedModel : [PerformanceTestSmallModel] = try unbox(dictionaries: self.jsonDict["data"] as! [[String : AnyObject]])
+            let unboxParsedModel : [PerformanceTestSmallModel] = try unbox(dictionaries: jsonDict["data"] as! [[String : AnyObject]])
             
             // decodable
-            let decodableParsedModel : [PerformanceTestSmallModel] = try [PerformanceTestSmallModel].decode(self.jsonDict["data"] as! [[String : AnyObject]])
+            let decodableParsedModel : [PerformanceTestSmallModel] = try [PerformanceTestSmallModel].decode(jsonDict["data"] as! [[String : AnyObject]])
             
             
             // make sure you add a check here for the newly added mapping frameworks
@@ -100,10 +79,12 @@ class SerpentComparisonTests: XCTestCase {
                     && jsonCodableParsedModel == unboxParsedModel
                     && unboxParsedModel == decodableParsedModel
             
+            // since we checked if they're all equal, we can only check the first one for correctness
             let parsedModelIsDifferentThanDefaultValues = serpentParsedModel[1].id != "" && serpentParsedModel[1].name != ""
             let firstParsedModelIsCorrect = serpentParsedModel[0].id == "56cf0c0c529c7a385b328947" && serpentParsedModel[0].name == "Jana"
             
             XCTAssert(allParsedModelsAreTheSame && parsedModelIsDifferentThanDefaultValues && firstParsedModelIsCorrect)
+            
         }
         catch {
             print(error)
@@ -115,8 +96,8 @@ class SerpentComparisonTests: XCTestCase {
     func testSerpentBig() {
         self.measure { () -> Void in
             do {
-                self.jsonDict = try JSONSerialization.jsonObject(with: self.largeData as Data, options: .allowFragments) as? NSDictionary
-                let _ = PerformanceTestModel.array(self.jsonDict["data"])
+                let jsonDict = try JSONSerialization.jsonObject(with: self.largeData as Data, options: .allowFragments) as! NSDictionary
+                let _ = PerformanceTestModel.array(jsonDict["data"])
             }
             catch {
                 print(error)
@@ -127,8 +108,8 @@ class SerpentComparisonTests: XCTestCase {
     func testSerpentSmall() {
         self.measure {
             do {
-                self.smallJsonDict = try JSONSerialization.jsonObject(with: self.smallData as Data, options: .allowFragments) as? NSDictionary
-                let _ = PerformanceTestSmallModel.array(self.smallJsonDict["data"])
+                let smallJsonDict = try JSONSerialization.jsonObject(with: self.smallData as Data, options: .allowFragments) as! NSDictionary
+                let _ = PerformanceTestSmallModel.array(smallJsonDict["data"])
             }
             catch {
                 print(error)
@@ -139,8 +120,8 @@ class SerpentComparisonTests: XCTestCase {
     func testFreddyBig() {
         self.measure {
             do {
-                self.freddyDict = try Freddy.JSON(data: self.largeData as Data)
-                let _ = try self.freddyDict.getArray(at: "data").map(PerformanceTestModel.init)
+                let freddyDict = try Freddy.JSON(data: self.largeData as Data)
+                let _ = try freddyDict.getArray(at: "data").map(PerformanceTestModel.init)
             }
             catch {
                 print(error)
@@ -151,8 +132,8 @@ class SerpentComparisonTests: XCTestCase {
     func testFreddySmall() {
         self.measure {
             do {
-                self.smallFreddyDict = try Freddy.JSON(data: self.smallData as Data)
-                let _ = try self.smallFreddyDict.getArray(at: "data").map(PerformanceTestSmallModel.init)
+                let smallFreddyDict = try Freddy.JSON(data: self.smallData as Data)
+                let _ = try smallFreddyDict.getArray(at: "data").map(PerformanceTestSmallModel.init)
             }
             catch {
                 print(error)
@@ -163,8 +144,8 @@ class SerpentComparisonTests: XCTestCase {
     func testGlossBig() {
         self.measure {
             do {
-                self.glossDict = try JSONSerialization.jsonObject(with: self.largeData as Data, options: .allowFragments) as? Gloss.JSON
-                if let objects = self.glossDict["data"] as? [Gloss.JSON] {
+                let glossDict = try JSONSerialization.jsonObject(with: self.largeData as Data, options: .allowFragments) as! Gloss.JSON
+                if let objects = glossDict["data"] as? [Gloss.JSON] {
                     let _ = [PerformanceTestModel].from(jsonArray: objects)
                 }
             }
@@ -177,8 +158,8 @@ class SerpentComparisonTests: XCTestCase {
     func testGlossSmall() {
         self.measure {
             do {
-                self.smallGlossDict = try JSONSerialization.jsonObject(with: self.smallData as Data, options: .allowFragments) as? Gloss.JSON
-                if let objects = self.smallGlossDict["data"] as? [Gloss.JSON] {
+                let smallGlossDict = try JSONSerialization.jsonObject(with: self.smallData as Data, options: .allowFragments) as! Gloss.JSON
+                if let objects = smallGlossDict["data"] as? [Gloss.JSON] {
                     let _ = [PerformanceTestSmallModel].from(jsonArray: objects)
                 }
             }
@@ -191,8 +172,8 @@ class SerpentComparisonTests: XCTestCase {
     func testObjectMapperBig() {
         self.measure {
             do {
-                self.objectMapperDict = try JSONSerialization.jsonObject(with: self.largeData as Data, options: .allowFragments) as? NSDictionary
-                let _ = Mapper<PerformanceTestModel>().mapArray(JSONObject: (self.objectMapperDict["data"]))
+                let objectMapperDict = try JSONSerialization.jsonObject(with: self.largeData as Data, options: .allowFragments) as! NSDictionary
+                let _ = Mapper<PerformanceTestModel>().mapArray(JSONObject: (objectMapperDict["data"]))
             }
             catch {
                 print(error)
@@ -203,8 +184,8 @@ class SerpentComparisonTests: XCTestCase {
     func testObjectMapperSmall() {
         self.measure {
             do {
-                self.objectMapperSmallDict = try JSONSerialization.jsonObject(with: self.smallData as Data, options: .allowFragments) as? NSDictionary
-                let _ = Mapper<PerformanceTestSmallModel>().mapArray(JSONObject: self.objectMapperSmallDict["data"])
+                let objectMapperSmallDict = try JSONSerialization.jsonObject(with: self.smallData as Data, options: .allowFragments) as! NSDictionary
+                let _ = Mapper<PerformanceTestSmallModel>().mapArray(JSONObject: objectMapperSmallDict["data"])
             }
             catch {
                 print(error)
@@ -215,8 +196,8 @@ class SerpentComparisonTests: XCTestCase {
     func testJSONCodableBig() {
         self.measure {
             do {
-                self.jsonCodableDict = try JSONSerialization.jsonObject(with: self.largeData as Data, options: .allowFragments) as? [String: AnyObject]
-                let _ = try Array<PerformanceTestModel>(JSONArray: self.jsonCodableDict["data"] as! [[String: AnyObject]])
+                let jsonCodableDict = try JSONSerialization.jsonObject(with: self.largeData as Data, options: .allowFragments) as! [String: AnyObject]
+                let _ = try Array<PerformanceTestModel>(JSONArray: jsonCodableDict["data"] as! [[String: AnyObject]])
             }
             catch {
                 print(error)
@@ -227,8 +208,8 @@ class SerpentComparisonTests: XCTestCase {
     func testJSONCodableSmall() {
         self.measure {
             do {
-                self.jsonCodableSmallDict = try JSONSerialization.jsonObject(with: self.smallData as Data, options: .allowFragments) as? [String: AnyObject]
-                let _ = try Array<PerformanceTestSmallModel>(JSONArray: self.jsonCodableSmallDict["data"] as! [[String: AnyObject]])
+                let jsonCodableSmallDict = try JSONSerialization.jsonObject(with: self.smallData as Data, options: .allowFragments) as! [String: AnyObject]
+                let _ = try Array<PerformanceTestSmallModel>(JSONArray: jsonCodableSmallDict["data"] as! [[String: AnyObject]])
                 
             }
             catch {
@@ -240,8 +221,8 @@ class SerpentComparisonTests: XCTestCase {
     func testUnboxBig() {
         self.measure {
             do {
-                self.unboxDict = try JSONSerialization.jsonObject(with: self.largeData as Data, options: .allowFragments) as? [String: Any] as [String : AnyObject]!
-                let _ : [PerformanceTestModel] = try unbox(dictionaries: self.unboxDict["data"] as! [[String : AnyObject]])
+                let unboxDict = try JSONSerialization.jsonObject(with: self.largeData as Data, options: .allowFragments) as! [String: AnyObject]
+                let _ : [PerformanceTestModel] = try unbox(dictionaries: unboxDict["data"] as! [[String : AnyObject]])
             }
             catch {
                 print(error)
@@ -252,8 +233,8 @@ class SerpentComparisonTests: XCTestCase {
     func testUnboxSmall() {
         self.measure {
             do {
-                self.unboxSmallDict = try JSONSerialization.jsonObject(with: self.smallData as Data, options: .allowFragments) as? [String: AnyObject]
-                let _ : [PerformanceTestSmallModel] = try unbox(dictionaries: self.unboxSmallDict["data"] as! [[String : AnyObject]])
+                let unboxSmallDict = try JSONSerialization.jsonObject(with: self.smallData as Data, options: .allowFragments) as! [String: AnyObject]
+                let _ : [PerformanceTestSmallModel] = try unbox(dictionaries: unboxSmallDict["data"] as! [[String : AnyObject]])
                 
             }
             catch {
@@ -265,8 +246,8 @@ class SerpentComparisonTests: XCTestCase {
     func testDecodableBig() {
         self.measure {
             do {
-                self.decodableDict = try JSONSerialization.jsonObject(with: self.largeData as Data, options: .allowFragments) as? [String: Any] as [String : AnyObject]!
-                let _ : [PerformanceTestModel] = try [PerformanceTestModel].decode(self.decodableDict["data"] as! [[String : AnyObject]])
+                let decodableDict = try JSONSerialization.jsonObject(with: self.largeData as Data, options: .allowFragments) as! [String : AnyObject]
+                let _ : [PerformanceTestModel] = try [PerformanceTestModel].decode(decodableDict["data"] as! [[String : AnyObject]])
             }
             catch {
                 print(error)
@@ -277,8 +258,8 @@ class SerpentComparisonTests: XCTestCase {
     func testDecodableSmall() {
         self.measure {
             do {
-                self.decodableSmallDict = try JSONSerialization.jsonObject(with: self.smallData as Data, options: .allowFragments) as? [String: AnyObject]
-                let _ : [PerformanceTestSmallModel] = try [PerformanceTestSmallModel].decode(self.decodableSmallDict["data"] as! [[String : AnyObject]])
+                let decodableSmallDict = try JSONSerialization.jsonObject(with: self.smallData as Data, options: .allowFragments) as! [String: AnyObject]
+                let _ : [PerformanceTestSmallModel] = try [PerformanceTestSmallModel].decode(decodableSmallDict["data"] as! [[String : AnyObject]])
                 
             }
             catch {
