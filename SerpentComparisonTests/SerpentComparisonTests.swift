@@ -12,6 +12,7 @@ import Gloss
 import ObjectMapper
 import Serpent
 import Unbox
+import Decodable
 @testable import SerpentComparison
 
 extension PerformanceTestSmallModel : Equatable {
@@ -42,6 +43,9 @@ class SerpentComparisonTests: XCTestCase {
     
     var unboxDict: [String : AnyObject]!
     var unboxSmallDict: [String : AnyObject]!
+    
+    var decodableDict: [String : AnyObject]!
+    var decodableSmallDict: [String : AnyObject]!
     
     override func setUp() {
         super.setUp()
@@ -83,9 +87,18 @@ class SerpentComparisonTests: XCTestCase {
             // unbox
             let unboxParsedModel : [PerformanceTestSmallModel] = try unbox(dictionaries: self.jsonDict["data"] as! [[String : AnyObject]])
             
+            // decodable
+            let decodableParsedModel : [PerformanceTestSmallModel] = try [PerformanceTestSmallModel].decode(self.jsonDict["data"] as! [[String : AnyObject]])
+            
             
             // make sure you add a check here for the newly added mapping frameworks
-            let allParsedModelsAreTheSame = serpentParsedModel == freddyParsedModel && freddyParsedModel == glossParsedModel! && glossParsedModel! == objectMapperParsedModel! && objectMapperParsedModel! == jsonCodableParsedModel && jsonCodableParsedModel == unboxParsedModel
+            let allParsedModelsAreTheSame =
+                       serpentParsedModel == freddyParsedModel
+                    && freddyParsedModel == glossParsedModel!
+                    && glossParsedModel! == objectMapperParsedModel!
+                    && objectMapperParsedModel! == jsonCodableParsedModel
+                    && jsonCodableParsedModel == unboxParsedModel
+                    && unboxParsedModel == decodableParsedModel
             
             let parsedModelIsDifferentThanDefaultValues = serpentParsedModel[1].id != "" && serpentParsedModel[1].name != ""
             let firstParsedModelIsCorrect = serpentParsedModel[0].id == "56cf0c0c529c7a385b328947" && serpentParsedModel[0].name == "Jana"
@@ -241,6 +254,31 @@ class SerpentComparisonTests: XCTestCase {
             do {
                 self.unboxSmallDict = try JSONSerialization.jsonObject(with: self.smallData as Data, options: .allowFragments) as? [String: AnyObject]
                 let _ : [PerformanceTestSmallModel] = try unbox(dictionaries: self.unboxSmallDict["data"] as! [[String : AnyObject]])
+                
+            }
+            catch {
+                print(error)
+            }
+        }
+    }
+    
+    func testDecodableBig() {
+        self.measure {
+            do {
+                self.decodableDict = try JSONSerialization.jsonObject(with: self.largeData as Data, options: .allowFragments) as? [String: Any] as [String : AnyObject]!
+                let _ : [PerformanceTestModel] = try [PerformanceTestModel].decode(self.decodableDict["data"] as! [[String : AnyObject]])
+            }
+            catch {
+                print(error)
+            }
+        }
+    }
+    
+    func testDecodableSmall() {
+        self.measure {
+            do {
+                self.decodableSmallDict = try JSONSerialization.jsonObject(with: self.smallData as Data, options: .allowFragments) as? [String: AnyObject]
+                let _ : [PerformanceTestSmallModel] = try [PerformanceTestSmallModel].decode(self.decodableSmallDict["data"] as! [[String : AnyObject]])
                 
             }
             catch {

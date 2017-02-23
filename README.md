@@ -4,7 +4,7 @@
 
 It's designed to be used together with our helper app, the [![ModelBoiler](http://i.imgur.com/V5UzMVk.png)](https://github.com/nodes-ios/ModelBoiler) [Model Boiler](https://github.com/nodes-ios/ModelBoiler), making model creation a breeze.
 
-#Serpent Performance Tests
+# Serpent Performance Tests
 
 [![Build Status](https://travis-ci.org/nodes-ios/SerpentPerformanceComparison.svg?branch=master)](https://travis-ci.org/nodes-ios/SerpentPerformanceComparison)
 
@@ -14,7 +14,7 @@ So how fast is Serpent? Why should I use Serpent instead of one of the many othe
 
 **Note:** All of the following can be found in the [Performance Tests](https://github.com/nodes-ios/SerpentPerformanceComparison/blob/master/SerpentComparisonTests/SerpentComparisonTests.swift) in this repo. 
 
-##The Data
+## The Data
 We need something big to test. Parsing a small 10-line JSON object doesn't help illustrate performance. So let's see how it does with an object like this: 
 
 ~~~
@@ -59,7 +59,7 @@ Let's also test 10,000 of a smaller object as well, to see how that impacts perf
 [This file](https://github.com/nodes-ios/SerpentPerformanceComparison/blob/master/SerpentComparisonTests/PerformanceSmallTest.json) is only 6% of the bigger file's size.
 
 
-##The Models
+## The Models
 
 So let's create our models now. We want to make the data as useful as possible, so we should use the appropriate data types when possible (not just using `String` for everything). 
 
@@ -111,7 +111,7 @@ struct PerformanceTestSmallModel {
 Serpent doesn't care if you use implicit or explicit types, so it is only added when needed (for `Enum`, nested types, or optionals, for example). Also, we could of course use optionals for these fields instead of default values (`favoriteFruit` vs. `eyeColor`, for example). 
 
 
-##The Tests
+## The Tests
 
 So now we want to parse the JSON into this model. With Serpent, this is done by conforming to `Decodable` and implementing `init(dictionary:NSDictionary?)` (all done automatically in a split-second if you use our [![ModelBoiler](http://i.imgur.com/V5UzMVk.png)](https://github.com/nodes-ios/ModelBoiler) [Model Boiler](https://github.com/nodes-ios/ModelBoiler): 
 
@@ -204,6 +204,7 @@ But how does it compare to other frameworks? We looked at 5 other popular framew
 - [ObjectMapper](https://github.com/Hearst-DD/ObjectMapper)
 - [JSONCodable](https://github.com/matthewcheok/JSONCodable)
 - [Unbox](https://github.com/JohnSundell/Unbox)
+- [Decodable](https://github.com/Anviking/Decodable)
 
 Before we can compare results, we have a few issues to resolve. Freddy only supports primitive types and collections, so no `Enum`, `NSURL`, or odd cases (such as the latitude and longitude fields, which are `String` in the JSON but `Double` in our model). JSONCodable and ObjectMapper can't handle the `NSURL`. So to be fair, we'll remove those properties from the test. 
 
@@ -211,41 +212,42 @@ Before we can compare results, we have a few issues to resolve. Freddy only supp
 
 Test | Large Model | Small Model
 ---|---|---
-Serpent 		| 0.692 sec | 0.084 sec
-Freddy       | 0.670 sec | 0.093 sec
-Gloss        | 2.750 sec | 0.365 sec
-ObjectMapper | 2.353 sec | 0.351 sec
-JSONCodable  | 4.615 sec | 0.549 sec
-Unbox		   | 3.292 sec | 0.359 sec
+Serpent 	   | 0.679 sec | 0.084 sec
+Freddy       | 0.671 sec | 0.090 sec
+Gloss        | 2.702 sec | 0.361 sec
+ObjectMapper | 2.313 sec | 0.346 sec
+JSONCodable  | 4.554 sec | 0.543 sec
+Unbox		   | 3.281 sec | 0.354 sec
+Decodable	   | 1.629 sec | 0.223 sec
 
 *The tests were last run locally on device on 22 February 2017.*
  
-We're running those performance tests on CI too, so you can see the latest results on [Travis-CI](https://travis-ci.org/nodes-ios/SerpentPerformanceComparison)
+We're running those performance tests on CI too, so you can see the latest results on [Travis-CI](https://travis-ci.org/nodes-ios/SerpentPerformanceComparison). The times on Travis are different, but the general picture is the same. 
 
 
-####So what does this mean?
+#### So what does this mean?
 
 When it comes to mapping, **Serpent** and **Freddy** are the fastest. When this test is run, sometimes Freddy is faster, sometimes Serpent is faster, but the difference is pretty negligible. 
 
 
-##Feature Comparison
+## Feature Comparison
 
 So you've seen the performance tests, but what about features? 
 
- | Serpent | Freddy | Gloss | ObjectMapper | JSONCodable | Unbox
----|---|---|---|---|---|---|
-Parses primitive types|✔️|✔️|✔️|✔️|✔️|✔️
-Parses nested objects|✔️|✔️|✔️|✔️|✔️|✔️
-Parses Enum types|✔️|❌|✔️|✔️|✔️|✔️
-Parses other types (e.g. NSURL, UIColor)|✔️|❌|✔️|❌|❌|✔️
-Easy protocol conformance syntax with custom operator|✔️|❌|✔️|✔️|❌|❌
-Flexible mapping function without complicated generics syntax or casting|✔️|✔️|❌|❌|❌|✔️
-Decodes without needing to handle errors|✔️|❌|✔️|✔️|❌|✔️
-Auto-generated code from Model Boiler|✔️|❌|❌|❌|❌|❌
-**Best Performance**|✔️|✔️|❌|❌|❌|❌
+ | Serpent | Freddy | Gloss | ObjectMapper | JSONCodable | Unbox | Decodable
+---|---|---|---|---|---|---|---|
+Parses primitive types|✔️|✔️|✔️|✔️|✔️|✔️|✔️
+Parses nested objects|✔️|✔️|✔️|✔️|✔️|✔️|✔️
+Parses Enum types|✔️|❌|✔️|✔️|✔️|✔️|❌
+Parses other types (e.g. NSURL, UIColor)|✔️|❌|✔️|❌|❌|✔️|❌
+Easy protocol conformance syntax with custom operator|✔️|❌|✔️|✔️|❌|❌|✔️
+Flexible mapping function without complicated generics syntax or casting|✔️|✔️|❌|❌|❌|✔️|✔️
+Decodes without needing to handle errors|✔️|❌|✔️|✔️|❌|✔️|✔️
+Auto-generated code from Model Boiler|✔️|❌|❌|❌|❌|❌|❌
+**Best Performance**|✔️|✔️|❌|❌|❌|❌|❌
 
 
-##TL;DR
+## TL;DR
 Serpent meets the best balance between speed and its number of features. But don't take our word for it, try it out and see for yourself! And don't forget, we have the [![ModelBoiler](http://i.imgur.com/V5UzMVk.png)](https://github.com/nodes-ios/ModelBoiler) [Model Boiler](https://github.com/nodes-ios/ModelBoiler), which saves loads of time and makes your life much easier. 
 
 ## Contributing
