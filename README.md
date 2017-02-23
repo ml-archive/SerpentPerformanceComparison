@@ -12,7 +12,7 @@ It's designed to be used together with our helper app, the [![ModelBoiler](http:
 
 So how fast is Serpent? Why should I use Serpent instead of one of the many other Encoding/Decoding frameworks out there? What features does Serpent lack?
 
-*Let's find out!* (or, you can [skip to the results](#📊-the-results))
+*Let's find out!* (or, you can [skip to the results](#-the-results))
 
 **Note:** All of the following can be found in the [Performance Tests](https://github.com/nodes-ios/SerpentPerformanceComparison/blob/master/SerpentComparisonTests/SerpentComparisonTests.swift) in this repo. 
 
