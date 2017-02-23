@@ -1,8 +1,10 @@
 <p align="center"><img src="https://github.com/nodes-ios/Serpent/blob/master/Serpent_icon.png?raw=true" alt="Serpent"/></p>
 
-**[Serpent](https://github.com/nodes-ios/Serpent)** *(previously known as Serializable)* is a framework made by us at Nodes for creating model objects or structs that can be easily serialized and deserialized from/to JSON. It's easily expandable and handles all common data types used when consuming a REST API, as well as recursive parsing of custom objects.
+**[Serpent](https://github.com/nodes-ios/Serpent)** *(previously known as Serializable)* is a framework made by us at Nodes for creating model objects or structs that can be easily serialized and deserialized from/to JSON. 
 
 It's designed to be used together with our helper app, the [![ModelBoiler](http://i.imgur.com/V5UzMVk.png)](https://github.com/nodes-ios/ModelBoiler) [Model Boiler](https://github.com/nodes-ios/ModelBoiler), making model creation a breeze.
+
+**In this repo we compare Serpent with other popular JSON mapping frameworks.**
 
 # Serpent Performance Tests
 
@@ -45,7 +47,7 @@ We need something big to test. Parsing a small 10-line JSON object doesn't help 
 
 ~~~
 
-A good mix of types, there are `Int`, `String`, `Enum`, `NSURL`, and nested Objects. But again, this isn't enough for useful metrics. [So lets use 10,000 of these](https://github.com/nodes-ios/SerpentPerformanceComparison/blob/master/SerpentComparisonTests/PerformanceTest.json). A 10.1 MB file should be good enough. 
+A good mix of types, there are `Int`, `String`, `Enum`, `NSURL`, and nested objects. But again, this isn't enough for useful metrics. [So lets use 10,000 of these](https://github.com/nodes-ios/SerpentPerformanceComparison/blob/master/SerpentComparisonTests/PerformanceTest.json). A 10.1 MB file should be good enough. 
 
 Let's also test 10,000 of a smaller object as well, to see how that impacts performance:
 
@@ -113,7 +115,7 @@ Serpent doesn't care if you use implicit or explicit types, so it is only added 
 
 ## The Tests
 
-So now we want to parse the JSON into this model. With Serpent, this is done by conforming to `Decodable` and implementing `init(dictionary:NSDictionary?)` (all done automatically in a split-second if you use our [![ModelBoiler](http://i.imgur.com/V5UzMVk.png)](https://github.com/nodes-ios/ModelBoiler) [Model Boiler](https://github.com/nodes-ios/ModelBoiler): 
+So now we want to parse the JSON into this model. With Serpent, this is done by conforming to `Decodable` and implementing `init(dictionary:NSDictionary?)` (all done automatically in a split-second if you use our [![ModelBoiler](http://i.imgur.com/V5UzMVk.png)](https://github.com/nodes-ios/ModelBoiler) [Model Boiler](https://github.com/nodes-ios/ModelBoiler)): 
 
 ~~~swift
 extension PerformanceTestModel: Serializable {
@@ -217,7 +219,7 @@ Decodable	   | 1.629 sec | 0.223 sec
  
 We're running those performance tests on CI too, so you can see the latest results on [Travis-CI](https://travis-ci.org/nodes-ios/SerpentPerformanceComparison). The times on Travis are different, but the general picture is the same. 
 
-Here's a chart with the results fromt he tests ran on an iPhone 6S after a clean build on 22 February 2017. Lower is better.
+Here's a chart with the results from the tests ran on an iPhone 6S after a clean build on 22 February 2017. Lower is better.
 
 ![Results chart](chart.png)
 
@@ -256,7 +258,7 @@ In order to be merged, a PR that adds a new JSON mapping framework:
 - must add the new framework via Carthage
 - must not break any of the other framework's usage implementation
 - must add performance tests that use the same data as the others (it's ok to add new json data for testing as long as you run the same tests for all the frameworks)
-- must edit the correctness test to test that the parsing is correct for the new mapping framework added
+- must edit the correctness test to check that the parsing is correct for the new mapping framework added
 - must not break the CI build
 
 We want those tests to be as fair as possible and to have the same conditions for all the frameworks that we test.  
@@ -264,7 +266,7 @@ We want those tests to be as fair as possible and to have the same conditions fo
 We reserve the right to close issues that only say "Please add `<insert_mapping_framework_name_here>` to your tests", without a PR that adds that library. We don't want the [issues](https://github.com/nodes-ios/SerpentPerformanceComparison/issues) of this repo to turn into a list of all the JSON mapping frameworks available. But we're very happy for pull requests 🤓
 
 ## 👥 Credits
-[Serpent](https://github.com/nodes-ios/Serpent) and the [Serpent Performance Comparison](https://github.com/nodes-ios/SerpentPerformanceComparison) were made with ❤️ at [Nodes](http://nodesagency.com).
+[Serpent](https://github.com/nodes-ios/Serpent), [![ModelBoiler](http://i.imgur.com/V5UzMVk.png)](https://github.com/nodes-ios/ModelBoiler) [Model Boiler](https://github.com/nodes-ios/ModelBoiler) and the [Serpent Performance Comparison](https://github.com/nodes-ios/SerpentPerformanceComparison) were made with ❤️ at [Nodes](http://nodesagency.com).
 
 ## 📄 License
 **Serpent Performance Comparison** is available under the MIT license. See the [LICENSE](https://github.com/nodes-ios/SerpentPerformanceComparison/blob/master/LICENSE) file for more info.
