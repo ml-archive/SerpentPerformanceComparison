@@ -288,7 +288,7 @@ class SerpentComparisonTests: XCTestCase {
         self.measure {
             do {
                 let smallMarshalDict = try Marshal.JSONParser.JSONObjectWithData(self.smallData as Data)
-                let _ : [PerformanceTestModel] = try smallMarshalDict.value(for: "data")
+                let _ : [PerformanceTestSmallModel] = try smallMarshalDict.value(for: "data")
             }
             catch {
                 print(error)
