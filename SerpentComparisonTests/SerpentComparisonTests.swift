@@ -13,6 +13,7 @@ import ObjectMapper
 import Serpent
 import Unbox
 import Decodable
+import Marshal
 @testable import SerpentComparison
 
 extension PerformanceTestSmallModel : Equatable {
@@ -68,7 +69,9 @@ class SerpentComparisonTests: XCTestCase {
             
             // decodable
             let decodableParsedModel : [PerformanceTestSmallModel] = try [PerformanceTestSmallModel].decode(jsonDict["data"] as! [[String : AnyObject]])
-            
+
+            // marshal
+            let marshalParsedModel : [PerformanceTestSmallModel] = try jsonDict.value(for: "data")
             
             // make sure you add a check here for the newly added mapping frameworks
             let allParsedModelsAreTheSame =
@@ -78,6 +81,7 @@ class SerpentComparisonTests: XCTestCase {
                     && objectMapperParsedModel! == jsonCodableParsedModel
                     && jsonCodableParsedModel == unboxParsedModel
                     && unboxParsedModel == decodableParsedModel
+                    && marshalParsedModel == unboxParsedModel
             
             // since we checked if they're all equal, we can only check the first one for correctness
             let parsedModelIsDifferentThanDefaultValues = serpentParsedModel[1].id != "" && serpentParsedModel[1].name != ""
@@ -267,4 +271,30 @@ class SerpentComparisonTests: XCTestCase {
             }
         }
     }
+
+    func testMarshalBig() {
+        self.measure {
+            do {
+                let marshalDict = try JSONSerialization.jsonObject(with: self.largeData as Data, options: .allowFragments) as! [String: AnyObject]
+                let _ : [PerformanceTestModel] = try marshalDict.value(for: "data")
+
+            }
+            catch {
+                print(error)
+            }
+        }
+    }
+
+    func testMarshalSmall() {
+        self.measure {
+            do {
+                let smallMarshalDict = try JSONSerialization.jsonObject(with: self.smallData as Data, options: .allowFragments) as! [String: AnyObject]
+                let _ : [PerformanceTestModel] = try smallMarshalDict.value(for: "data")
+            }
+            catch {
+                print(error)
+            }
+        }
+    }
+
 }

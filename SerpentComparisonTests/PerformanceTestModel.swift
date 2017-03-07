@@ -13,7 +13,7 @@ import Gloss
 import ObjectMapper
 import JSONCodable
 import Unbox
-
+import Marshal
 
 
 struct PerformanceTestModel {
@@ -301,6 +301,43 @@ extension Name: Unboxable {
         first = try unboxer.unbox(key: "first")
         last = try unboxer.unbox(key: "last")
         
+    }
+}
+
+
+// Marshal
+
+extension PerformanceTestModel: Unmarshaling {
+    init(object: MarshaledObject) throws {
+
+        id = try object.value(for: "id")
+        index = try object.value(for: "index")
+        guid = try object.value(for: "guid")
+        isActive = try object.value(for: "isActive")
+        balance = try object.value(for: "balance")
+        //		picture = try object.value(for: "picture")
+        age = try object.value(for: "age")
+        //		eyeColor = try object.value(for: "eyeColor")
+        name = try object.value(for: "name")
+        company = try object.value(for: "company")
+        email = try object.value(for: "email")
+        phone = try object.value(for: "phone")
+        address = try object.value(for: "address")
+        about = try object.value(for: "about")
+        registered = try object.value(for: "registered")
+        //		latitude = try object.value(for: "latitude")
+        //		longitude = try object.value(for: "longitude")
+        greeting = try object.value(for: "greeting")
+        //		favoriteFruit = try object.value(for: "favoriteFruit")
+    }
+}
+
+extension Name: Unmarshaling {
+    init(object: MarshaledObject) throws {
+
+        first = try object.value(for: "first")
+        last = try object.value(for: "last")
+
     }
 }
 

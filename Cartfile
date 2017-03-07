@@ -5,3 +5,4 @@ github "matthewcheok/JSONCodable" ~> 3.0.1
 github "nodes-ios/Serpent" ~> 1.0.4
 github "johnsundell/unbox" ~> 2.4.0
 github "Anviking/Decodable" ~> 0.5
+github "utahiosmac/Marshal" ~> 1.2.4
