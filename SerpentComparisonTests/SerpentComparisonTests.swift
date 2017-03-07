@@ -91,7 +91,7 @@ class SerpentComparisonTests: XCTestCase {
             
         }
         catch {
-            print(error)
+            XCTFail(error.localizedDescription)
         }
         
         
@@ -104,7 +104,7 @@ class SerpentComparisonTests: XCTestCase {
                 let _ = PerformanceTestModel.array(jsonDict["data"])
             }
             catch {
-                print(error)
+                XCTFail(error.localizedDescription)
             }
         }
     }
@@ -116,7 +116,7 @@ class SerpentComparisonTests: XCTestCase {
                 let _ = PerformanceTestSmallModel.array(smallJsonDict["data"])
             }
             catch {
-                print(error)
+                XCTFail(error.localizedDescription)
             }
         }
     }
@@ -128,7 +128,7 @@ class SerpentComparisonTests: XCTestCase {
                 let _ = try freddyDict.getArray(at: "data").map(PerformanceTestModel.init)
             }
             catch {
-                print(error)
+                XCTFail(error.localizedDescription)
             }
         }
     }
@@ -140,7 +140,7 @@ class SerpentComparisonTests: XCTestCase {
                 let _ = try smallFreddyDict.getArray(at: "data").map(PerformanceTestSmallModel.init)
             }
             catch {
-                print(error)
+                XCTFail(error.localizedDescription)
             }
         }
     }
@@ -154,7 +154,7 @@ class SerpentComparisonTests: XCTestCase {
                 }
             }
             catch {
-                print(error)
+                XCTFail(error.localizedDescription)
             }
         }
     }
@@ -168,7 +168,7 @@ class SerpentComparisonTests: XCTestCase {
                 }
             }
             catch {
-                print(error)
+                XCTFail(error.localizedDescription)
             }
         }
     }
@@ -180,7 +180,7 @@ class SerpentComparisonTests: XCTestCase {
                 let _ = Mapper<PerformanceTestModel>().mapArray(JSONObject: (objectMapperDict["data"]))
             }
             catch {
-                print(error)
+                XCTFail(error.localizedDescription)
             }
         }
     }
@@ -192,7 +192,7 @@ class SerpentComparisonTests: XCTestCase {
                 let _ = Mapper<PerformanceTestSmallModel>().mapArray(JSONObject: objectMapperSmallDict["data"])
             }
             catch {
-                print(error)
+                XCTFail(error.localizedDescription)
             }
         }
     }
@@ -204,7 +204,7 @@ class SerpentComparisonTests: XCTestCase {
                 let _ = try Array<PerformanceTestModel>(JSONArray: jsonCodableDict["data"] as! [[String: AnyObject]])
             }
             catch {
-                print(error)
+                XCTFail(error.localizedDescription)
             }
         }
     }
@@ -217,7 +217,7 @@ class SerpentComparisonTests: XCTestCase {
                 
             }
             catch {
-                print(error)
+                XCTFail(error.localizedDescription)
             }
         }
     }
@@ -229,7 +229,7 @@ class SerpentComparisonTests: XCTestCase {
                 let _ : [PerformanceTestModel] = try unbox(dictionaries: unboxDict["data"] as! [[String : AnyObject]])
             }
             catch {
-                print(error)
+                XCTFail(error.localizedDescription)
             }
         }
     }
@@ -242,7 +242,7 @@ class SerpentComparisonTests: XCTestCase {
                 
             }
             catch {
-                print(error)
+                XCTFail(error.localizedDescription)
             }
         }
     }
@@ -254,7 +254,7 @@ class SerpentComparisonTests: XCTestCase {
                 let _ : [PerformanceTestModel] = try [PerformanceTestModel].decode(decodableDict["data"] as! [[String : AnyObject]])
             }
             catch {
-                print(error)
+                XCTFail(error.localizedDescription)
             }
         }
     }
@@ -267,7 +267,7 @@ class SerpentComparisonTests: XCTestCase {
                 
             }
             catch {
-                print(error)
+                XCTFail(error.localizedDescription)
             }
         }
     }
@@ -279,7 +279,7 @@ class SerpentComparisonTests: XCTestCase {
                 let _ : [PerformanceTestModel] = try marshalDict.value(for: "data")
             }
             catch {
-                print(error)
+                XCTFail(error.localizedDescription)
             }
         }
     }
@@ -291,7 +291,7 @@ class SerpentComparisonTests: XCTestCase {
                 let _ : [PerformanceTestSmallModel] = try smallMarshalDict.value(for: "data")
             }
             catch {
-                print(error)
+                XCTFail(error.localizedDescription)
             }
         }
     }
