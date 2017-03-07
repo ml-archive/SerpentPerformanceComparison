@@ -275,9 +275,8 @@ class SerpentComparisonTests: XCTestCase {
     func testMarshalBig() {
         self.measure {
             do {
-                let marshalDict = try JSONSerialization.jsonObject(with: self.largeData as Data, options: .allowFragments) as! [String: AnyObject]
+                let marshalDict = try Marshal.JSONParser.JSONObjectWithData(self.largeData as Data)
                 let _ : [PerformanceTestModel] = try marshalDict.value(for: "data")
-
             }
             catch {
                 print(error)
@@ -288,7 +287,7 @@ class SerpentComparisonTests: XCTestCase {
     func testMarshalSmall() {
         self.measure {
             do {
-                let smallMarshalDict = try JSONSerialization.jsonObject(with: self.smallData as Data, options: .allowFragments) as! [String: AnyObject]
+                let smallMarshalDict = try Marshal.JSONParser.JSONObjectWithData(self.smallData as Data)
                 let _ : [PerformanceTestModel] = try smallMarshalDict.value(for: "data")
             }
             catch {
