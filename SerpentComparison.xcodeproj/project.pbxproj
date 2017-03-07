@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		245AA8C61E6EF3E000C91BD7 /* Marshal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 245AA8C51E6EF3E000C91BD7 /* Marshal.framework */; };
-		245AA8C71E6EF3E000C91BD7 /* Marshal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 245AA8C51E6EF3E000C91BD7 /* Marshal.framework */; };
+		245910271E6EFFBD0083D804 /* Marshal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 245910261E6EFFBD0083D804 /* Marshal.framework */; };
 		290F31941E545909007AFEB7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290F31931E545909007AFEB7 /* AppDelegate.swift */; };
 		290F31961E545909007AFEB7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290F31951E545909007AFEB7 /* ViewController.swift */; };
 		290F31991E545909007AFEB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 290F31971E545909007AFEB7 /* Main.storyboard */; };
@@ -53,7 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		245AA8C51E6EF3E000C91BD7 /* Marshal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Marshal.framework; path = Carthage/Build/iOS/Marshal.framework; sourceTree = "<group>"; };
+		245910261E6EFFBD0083D804 /* Marshal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Marshal.framework; path = Carthage/Build/iOS/Marshal.framework; sourceTree = "<group>"; };
 		290F31901E545909007AFEB7 /* SerpentComparison.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SerpentComparison.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		290F31931E545909007AFEB7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		290F31951E545909007AFEB7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -90,7 +89,7 @@
 				290F31DB1E545FA6007AFEB7 /* Alamofire.framework in Frameworks */,
 				290F31DC1E545FA6007AFEB7 /* Cashier.framework in Frameworks */,
 				2966647F1E5DD737005E0B4D /* Decodable.framework in Frameworks */,
-				245AA8C61E6EF3E000C91BD7 /* Marshal.framework in Frameworks */,
+				245910271E6EFFBD0083D804 /* Marshal.framework in Frameworks */,
 				290F31DD1E545FA6007AFEB7 /* Freddy.framework in Frameworks */,
 				290F31DE1E545FA6007AFEB7 /* Gloss.framework in Frameworks */,
 				290F31DF1E545FA6007AFEB7 /* JSONCodable.framework in Frameworks */,
@@ -107,7 +106,6 @@
 				290F31E71E54603C007AFEB7 /* ObjectMapper.framework in Frameworks */,
 				290F31E31E546032007AFEB7 /* Cashier.framework in Frameworks */,
 				290F31E81E54603F007AFEB7 /* Serpent.framework in Frameworks */,
-				245AA8C71E6EF3E000C91BD7 /* Marshal.framework in Frameworks */,
 				290F31E61E54603A007AFEB7 /* JSONCodable.framework in Frameworks */,
 				290F31E41E546035007AFEB7 /* Freddy.framework in Frameworks */,
 				290F31E21E546030007AFEB7 /* Alamofire.framework in Frameworks */,
@@ -166,6 +164,7 @@
 		290F31B51E545C07007AFEB7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				245910261E6EFFBD0083D804 /* Marshal.framework */,
 				2966647E1E5DD737005E0B4D /* Decodable.framework */,
 				29E5B0051E5C52A700F6DBC6 /* Unbox.framework */,
 				290F31B61E545C07007AFEB7 /* Alamofire.framework */,
@@ -173,7 +172,6 @@
 				290F31B81E545C07007AFEB7 /* Freddy.framework */,
 				290F31B91E545C07007AFEB7 /* Gloss.framework */,
 				290F31BA1E545C07007AFEB7 /* JSONCodable.framework */,
-				245AA8C51E6EF3E000C91BD7 /* Marshal.framework */,
 				290F31BB1E545C07007AFEB7 /* ObjectMapper.framework */,
 				290F31BC1E545C07007AFEB7 /* Serpent.framework */,
 			);
