@@ -229,7 +229,7 @@ Here's a chart with the results from the tests ran on an iPhone 6S after a clean
 
 #### So what does this mean?
 
-When it comes to mapping, **Marshal** is the fastes, followed by **Freddy** and **Serpent** (the order between Freddy and Serpent varies from one test to another and we'd say is pretty negligible). Overall, all three frameworks performed way better than the others.
+When it comes to mapping, **Marshal** is the fastest, followed by **Freddy** and **Serpent** (the order between Freddy and Serpent varies from one test to another and we'd say is pretty negligible). Overall, all three frameworks performed way better than the others.
 
 
 ## 📈 Feature Comparison
