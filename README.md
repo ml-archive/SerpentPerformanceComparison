@@ -203,47 +203,52 @@ But how does it compare to other frameworks? We looked at 6 other popular framew
 
 Before we can compare results, we have a few issues to resolve. Freddy only supports primitive types and collections, so no `Enum`, `NSURL`, or odd cases (such as the latitude and longitude fields, which are `String` in the JSON but `Double` in our model). Others can't handle the `NSURL`. So to be fair, we'll remove those properties from the test. 
 
+**Later edit**: We also got PRs that added the following frameworks: [Marshal](https://github.com/utahiosmac/Marshal) (thanks to [bre7](https://github.com/bre7)).
+
 **Note:** If you're curious about the usage of the other frameworks, you can have a look at [the test file](https://github.com/nodes-ios/SerpentPerformanceComparison/blob/master/SerpentComparisonTests/SerpentComparisonTests.swift). 
 
 Test | Large Model | Small Model
 ---|---|---
-Serpent 	   | 0.679 sec | 0.084 sec
-Freddy       | 0.671 sec | 0.090 sec
-Gloss        | 2.702 sec | 0.361 sec
-ObjectMapper | 2.313 sec | 0.346 sec
-JSONCodable  | 4.554 sec | 0.543 sec
-Unbox		   | 3.281 sec | 0.354 sec
-Decodable	   | 1.629 sec | 0.223 sec
+Serpent 	   | 0.711 sec | 0.085 sec
+Freddy       | 0.670 sec | 0.097 sec
+Gloss        | 2.682 sec | 0.360 sec
+ObjectMapper | 2.279 sec | 0.348 sec
+JSONCodable  | 4.363 sec | 0.510 sec
+Unbox		   | 3.102 sec | 0.372 sec
+Decodable	   | 1.642 sec | 0.215 sec
+Marshal	   | 0.528 sec | 0.096 sec
 
-*The tests were last run locally on device on 22 February 2017.*
+*The tests were last run locally on device on 8 March 2017. Here's the [full output](testsOutput.log)*
  
 We're running those performance tests on CI too, so you can see the latest results on [Travis-CI](https://travis-ci.org/nodes-ios/SerpentPerformanceComparison). The times on Travis are different, but the general picture is the same. 
 
-Here's a chart with the results from the tests ran on an iPhone 6S after a clean build on 22 February 2017. Lower is better.
+Here's a chart with the results from the tests ran on an iPhone 6S after a clean build on 8 March 2017. Lower is better.
 
 ![Results chart](chart.png)
 
 
 #### So what does this mean?
 
-When it comes to mapping, **Serpent** and **Freddy** are the fastest. When this test is run, sometimes Freddy is faster, sometimes Serpent is faster, but the difference is pretty negligible. 
+When it comes to mapping, **Marshal** is the fastest, followed by **Freddy** and **Serpent** (the order between Freddy and Serpent varies from one test to another and we'd say is pretty negligible). Overall, all three frameworks performed way better than the others.
 
 
 ## 📈 Feature Comparison
 
 So you've seen the performance tests, but what about features? 
 
- | Serpent | Freddy | Gloss | ObjectMapper | JSONCodable | Unbox | Decodable
----|---|---|---|---|---|---|---|
-Parses primitive types|✔️|✔️|✔️|✔️|✔️|✔️|✔️
-Parses nested objects|✔️|✔️|✔️|✔️|✔️|✔️|✔️
-Parses Enum types|✔️|❌|✔️|✔️|✔️|✔️|❌
-Parses other types (e.g. NSURL, UIColor)|✔️|❌|✔️|❌|❌|✔️|❌
-Easy protocol conformance syntax with custom operator|✔️|❌|✔️|✔️|❌|❌|✔️
-Flexible mapping function without complicated generics syntax or casting|✔️|✔️|❌|❌|❌|✔️|✔️
-Decodes without needing to handle errors|✔️|❌|✔️|✔️|❌|✔️|✔️
-Auto-generated code from Model Boiler|✔️|❌|❌|❌|❌|❌|❌
-**Best Performance**|✔️|✔️|❌|❌|❌|❌|❌
+ | Serpent | Freddy | Gloss | ObjectMapper | JSONCodable | Unbox | Decodable | Marshal |
+---|---|---|---|---|---|---|---|---|
+Parses primitive types|✔️|✔️|✔️|✔️|✔️|✔️|✔️|✔️
+Parses nested objects|✔️|✔️|✔️|✔️|✔️|✔️|✔️|✔️
+Parses Enum types|✔️|❌|✔️|✔️|✔️|✔️|❌|✔️
+Parses other types (e.g. NSURL, UIColor)|✔️|❌|✔️|❌|❌|✔️|❌|partially<sup>1</sup>
+Easy protocol conformance syntax with custom operator|✔️|❌|✔️|✔️|❌|❌|✔️|✔️
+Flexible mapping function without complicated generics syntax or casting|✔️|✔️|❌|❌|❌|✔️|✔️|✔️
+Decodes without needing to handle errors|✔️|❌|✔️|✔️|❌|✔️|✔️|✔️
+Auto-generated code from Model Boiler|✔️|❌|❌|❌|❌|❌|❌|❌
+**Great Performance**|✔️|✔️|❌|❌|❌|❌|❌|✔️
+
+<sup>1</sup> Marshal supports NSURL, doesn't support UIColor, but you can manually create extensions that will parse it.
 
 
 ## 🏷 TL;DR

@@ -1,0 +1,65 @@
+Test Suite 'All tests' started at 2017-03-08 10:17:45.665
+Test Suite 'SerpentComparisonTests.xctest' started at 2017-03-08 10:17:45.666
+Test Suite 'SerpentComparisonTests' started at 2017-03-08 10:17:45.666
+Test Case '-[SerpentComparisonTests.SerpentComparisonTests test_correctness]' started.
+Test Case '-[SerpentComparisonTests.SerpentComparisonTests test_correctness]' passed (2.217 seconds).
+Test Case '-[SerpentComparisonTests.SerpentComparisonTests testDecodableBig]' started.
+<unknown>:0: Test Case '-[SerpentComparisonTests.SerpentComparisonTests testDecodableBig]' measured [Time, seconds] average: 1.642, relative standard deviation: 1.890%, values: [1.718940, 1.675743, 1.647889, 1.630141, 1.613000, 1.615865, 1.637025, 1.637669, 1.619566, 1.623978], performanceMetricID:com.apple.XCTPerformanceMetric_WallClockTime, baselineName: "", baselineAverage: , maxPercentRegression: 10.000%, maxPercentRelativeStandardDeviation: 10.000%, maxRegression: 0.100, maxStandardDeviation: 0.100
+Test Case '-[SerpentComparisonTests.SerpentComparisonTests testDecodableBig]' passed (16.736 seconds).
+Test Case '-[SerpentComparisonTests.SerpentComparisonTests testDecodableSmall]' started.
+<unknown>:0: Test Case '-[SerpentComparisonTests.SerpentComparisonTests testDecodableSmall]' measured [Time, seconds] average: 0.215, relative standard deviation: 7.682%, values: [0.264339, 0.208710, 0.207582, 0.214727, 0.213417, 0.212175, 0.207542, 0.206866, 0.208636, 0.209106], performanceMetricID:com.apple.XCTPerformanceMetric_WallClockTime, baselineName: "", baselineAverage: , maxPercentRegression: 10.000%, maxPercentRelativeStandardDeviation: 10.000%, maxRegression: 0.100, maxStandardDeviation: 0.100
+Test Case '-[SerpentComparisonTests.SerpentComparisonTests testDecodableSmall]' passed (2.434 seconds).
+Test Case '-[SerpentComparisonTests.SerpentComparisonTests testFreddyBig]' started.
+<unknown>:0: Test Case '-[SerpentComparisonTests.SerpentComparisonTests testFreddyBig]' measured [Time, seconds] average: 0.670, relative standard deviation: 1.138%, values: [0.672125, 0.658847, 0.654613, 0.665572, 0.667746, 0.673800, 0.670210, 0.678401, 0.675760, 0.678585], performanceMetricID:com.apple.XCTPerformanceMetric_WallClockTime, baselineName: "", baselineAverage: , maxPercentRegression: 10.000%, maxPercentRelativeStandardDeviation: 10.000%, maxRegression: 0.100, maxStandardDeviation: 0.100
+Test Case '-[SerpentComparisonTests.SerpentComparisonTests testFreddyBig]' passed (6.955 seconds).
+Test Case '-[SerpentComparisonTests.SerpentComparisonTests testFreddySmall]' started.
+<unknown>:0: Test Case '-[SerpentComparisonTests.SerpentComparisonTests testFreddySmall]' measured [Time, seconds] average: 0.097, relative standard deviation: 14.857%, values: [0.139405, 0.099838, 0.098448, 0.094372, 0.092442, 0.090910, 0.088586, 0.089726, 0.088826, 0.091375], performanceMetricID:com.apple.XCTPerformanceMetric_WallClockTime, baselineName: "", baselineAverage: , maxPercentRegression: 10.000%, maxPercentRelativeStandardDeviation: 10.000%, maxRegression: 0.100, maxStandardDeviation: 0.100
+Test Case '-[SerpentComparisonTests.SerpentComparisonTests testFreddySmall]' passed (1.234 seconds).
+Test Case '-[SerpentComparisonTests.SerpentComparisonTests testGlossBig]' started.
+<unknown>:0: Test Case '-[SerpentComparisonTests.SerpentComparisonTests testGlossBig]' measured [Time, seconds] average: 2.682, relative standard deviation: 0.718%, values: [2.721083, 2.684013, 2.652813, 2.652425, 2.699150, 2.674688, 2.679095, 2.685673, 2.680539, 2.690935], performanceMetricID:com.apple.XCTPerformanceMetric_WallClockTime, baselineName: "", baselineAverage: , maxPercentRegression: 10.000%, maxPercentRelativeStandardDeviation: 10.000%, maxRegression: 0.100, maxStandardDeviation: 0.100
+Test Case '-[SerpentComparisonTests.SerpentComparisonTests testGlossBig]' passed (27.080 seconds).
+Test Case '-[SerpentComparisonTests.SerpentComparisonTests testGlossSmall]' started.
+<unknown>:0: Test Case '-[SerpentComparisonTests.SerpentComparisonTests testGlossSmall]' measured [Time, seconds] average: 0.360, relative standard deviation: 11.382%, values: [0.482292, 0.339997, 0.345899, 0.345705, 0.345355, 0.347702, 0.348667, 0.347661, 0.348816, 0.344763], performanceMetricID:com.apple.XCTPerformanceMetric_WallClockTime, baselineName: "", baselineAverage: , maxPercentRegression: 10.000%, maxPercentRelativeStandardDeviation: 10.000%, maxRegression: 0.100, maxStandardDeviation: 0.100
+Test Case '-[SerpentComparisonTests.SerpentComparisonTests testGlossSmall]' passed (3.876 seconds).
+Test Case '-[SerpentComparisonTests.SerpentComparisonTests testJSONCodableBig]' started.
+<unknown>:0: Test Case '-[SerpentComparisonTests.SerpentComparisonTests testJSONCodableBig]' measured [Time, seconds] average: 4.363, relative standard deviation: 0.682%, values: [4.431111, 4.339295, 4.322477, 4.375985, 4.327203, 4.352950, 4.366993, 4.384039, 4.365372, 4.360880], performanceMetricID:com.apple.XCTPerformanceMetric_WallClockTime, baselineName: "", baselineAverage: , maxPercentRegression: 10.000%, maxPercentRelativeStandardDeviation: 10.000%, maxRegression: 0.100, maxStandardDeviation: 0.100
+Test Case '-[SerpentComparisonTests.SerpentComparisonTests testJSONCodableBig]' passed (43.898 seconds).
+Test Case '-[SerpentComparisonTests.SerpentComparisonTests testJSONCodableSmall]' started.
+<unknown>:0: Test Case '-[SerpentComparisonTests.SerpentComparisonTests testJSONCodableSmall]' measured [Time, seconds] average: 0.510, relative standard deviation: 2.379%, values: [0.545572, 0.505271, 0.504259, 0.503856, 0.502901, 0.507331, 0.505440, 0.512305, 0.508257, 0.504855], performanceMetricID:com.apple.XCTPerformanceMetric_WallClockTime, baselineName: "", baselineAverage: , maxPercentRegression: 10.000%, maxPercentRelativeStandardDeviation: 10.000%, maxRegression: 0.100, maxStandardDeviation: 0.100
+Test Case '-[SerpentComparisonTests.SerpentComparisonTests testJSONCodableSmall]' passed (5.376 seconds).
+Test Case '-[SerpentComparisonTests.SerpentComparisonTests testMarshalBig]' started.
+<unknown>:0: Test Case '-[SerpentComparisonTests.SerpentComparisonTests testMarshalBig]' measured [Time, seconds] average: 0.528, relative standard deviation: 4.850%, values: [0.605042, 0.519661, 0.519968, 0.518836, 0.523576, 0.520976, 0.518715, 0.518360, 0.517392, 0.520772], performanceMetricID:com.apple.XCTPerformanceMetric_WallClockTime, baselineName: "", baselineAverage: , maxPercentRegression: 10.000%, maxPercentRelativeStandardDeviation: 10.000%, maxRegression: 0.100, maxStandardDeviation: 0.100
+Test Case '-[SerpentComparisonTests.SerpentComparisonTests testMarshalBig]' passed (5.564 seconds).
+Test Case '-[SerpentComparisonTests.SerpentComparisonTests testMarshalSmall]' started.
+<unknown>:0: Test Case '-[SerpentComparisonTests.SerpentComparisonTests testMarshalSmall]' measured [Time, seconds] average: 0.096, relative standard deviation: 48.751%, values: [0.232960, 0.106870, 0.078667, 0.075748, 0.079483, 0.077832, 0.076066, 0.075663, 0.077129, 0.076175], performanceMetricID:com.apple.XCTPerformanceMetric_WallClockTime, baselineName: "", baselineAverage: , maxPercentRegression: 10.000%, maxPercentRelativeStandardDeviation: 10.000%, maxRegression: 0.100, maxStandardDeviation: 0.100
+Test Case '-[SerpentComparisonTests.SerpentComparisonTests testMarshalSmall]' passed (1.231 seconds).
+Test Case '-[SerpentComparisonTests.SerpentComparisonTests testObjectMapperBig]' started.
+<unknown>:0: Test Case '-[SerpentComparisonTests.SerpentComparisonTests testObjectMapperBig]' measured [Time, seconds] average: 2.279, relative standard deviation: 1.038%, values: [2.341695, 2.256926, 2.292930, 2.257508, 2.283354, 2.264058, 2.262657, 2.277211, 2.277264, 2.277090], performanceMetricID:com.apple.XCTPerformanceMetric_WallClockTime, baselineName: "", baselineAverage: , maxPercentRegression: 10.000%, maxPercentRelativeStandardDeviation: 10.000%, maxRegression: 0.100, maxStandardDeviation: 0.100
+Test Case '-[SerpentComparisonTests.SerpentComparisonTests testObjectMapperBig]' passed (23.074 seconds).
+Test Case '-[SerpentComparisonTests.SerpentComparisonTests testObjectMapperSmall]' started.
+<unknown>:0: Test Case '-[SerpentComparisonTests.SerpentComparisonTests testObjectMapperSmall]' measured [Time, seconds] average: 0.348, relative standard deviation: 6.393%, values: [0.414017, 0.337730, 0.336613, 0.344786, 0.339236, 0.338856, 0.336326, 0.346716, 0.346218, 0.341016], performanceMetricID:com.apple.XCTPerformanceMetric_WallClockTime, baselineName: "", baselineAverage: , maxPercentRegression: 10.000%, maxPercentRelativeStandardDeviation: 10.000%, maxRegression: 0.100, maxStandardDeviation: 0.100
+Test Case '-[SerpentComparisonTests.SerpentComparisonTests testObjectMapperSmall]' passed (3.748 seconds).
+Test Case '-[SerpentComparisonTests.SerpentComparisonTests testSerpentBig]' started.
+<unknown>:0: Test Case '-[SerpentComparisonTests.SerpentComparisonTests testSerpentBig]' measured [Time, seconds] average: 0.711, relative standard deviation: 4.003%, values: [0.794133, 0.701939, 0.702845, 0.693883, 0.700702, 0.710055, 0.696843, 0.701519, 0.692602, 0.713710], performanceMetricID:com.apple.XCTPerformanceMetric_WallClockTime, baselineName: "", baselineAverage: , maxPercentRegression: 10.000%, maxPercentRelativeStandardDeviation: 10.000%, maxRegression: 0.100, maxStandardDeviation: 0.100
+Test Case '-[SerpentComparisonTests.SerpentComparisonTests testSerpentBig]' passed (7.383 seconds).
+Test Case '-[SerpentComparisonTests.SerpentComparisonTests testSerpentSmall]' started.
+<unknown>:0: Test Case '-[SerpentComparisonTests.SerpentComparisonTests testSerpentSmall]' measured [Time, seconds] average: 0.085, relative standard deviation: 31.766%, values: [0.165499, 0.087812, 0.074737, 0.074288, 0.074390, 0.077502, 0.074366, 0.074732, 0.074357, 0.074251], performanceMetricID:com.apple.XCTPerformanceMetric_WallClockTime, baselineName: "", baselineAverage: , maxPercentRegression: 10.000%, maxPercentRelativeStandardDeviation: 10.000%, maxRegression: 0.100, maxStandardDeviation: 0.100
+Test Case '-[SerpentComparisonTests.SerpentComparisonTests testSerpentSmall]' passed (1.126 seconds).
+Test Case '-[SerpentComparisonTests.SerpentComparisonTests testUnboxBig]' started.
+<unknown>:0: Test Case '-[SerpentComparisonTests.SerpentComparisonTests testUnboxBig]' measured [Time, seconds] average: 3.102, relative standard deviation: 0.958%, values: [3.164410, 3.113806, 3.089495, 3.105622, 3.087522, 3.107956, 3.080948, 3.042129, 3.120118, 3.107745], performanceMetricID:com.apple.XCTPerformanceMetric_WallClockTime, baselineName: "", baselineAverage: , maxPercentRegression: 10.000%, maxPercentRelativeStandardDeviation: 10.000%, maxRegression: 0.100, maxStandardDeviation: 0.100
+Test Case '-[SerpentComparisonTests.SerpentComparisonTests testUnboxBig]' passed (31.294 seconds).
+Test Case '-[SerpentComparisonTests.SerpentComparisonTests testUnboxSmall]' started.
+<unknown>:0: Test Case '-[SerpentComparisonTests.SerpentComparisonTests testUnboxSmall]' measured [Time, seconds] average: 0.372, relative standard deviation: 12.172%, values: [0.507475, 0.360038, 0.361540, 0.360373, 0.353560, 0.352113, 0.351597, 0.356008, 0.362265, 0.355673], performanceMetricID:com.apple.XCTPerformanceMetric_WallClockTime, baselineName: "", baselineAverage: , maxPercentRegression: 10.000%, maxPercentRelativeStandardDeviation: 10.000%, maxRegression: 0.100, maxStandardDeviation: 0.100
+Test Case '-[SerpentComparisonTests.SerpentComparisonTests testUnboxSmall]' passed (4.000 seconds).
+Test Suite 'SerpentComparisonTests' passed at 2017-03-08 10:20:52.898.
+	 Executed 17 tests, with 0 failures (0 unexpected) in 187.223 (187.232) seconds
+Test Suite 'SerpentComparisonTests.xctest' passed at 2017-03-08 10:20:52.899.
+	 Executed 17 tests, with 0 failures (0 unexpected) in 187.223 (187.233) seconds
+Test Suite 'All tests' passed at 2017-03-08 10:20:52.900.
+	 Executed 17 tests, with 0 failures (0 unexpected) in 187.223 (187.235) seconds
+
+
+Test session log:
+	/Users/marius/Library/Developer/Xcode/DerivedData/SerpentComparison-dfuodtcseavxvvdzhjgddnzoymdp/Logs/Test/83806297-3BAA-4B0C-8029-D295DF91EFE6/Session-SerpentComparisonTests-2017-03-08_101714-OPjeep.log
+
+
