@@ -13,6 +13,7 @@ import Gloss
 import ObjectMapper
 import JSONCodable
 import Unbox
+import Marshal
 
 struct PerformanceTestSmallModel {	
 	var id = ""
@@ -88,5 +89,16 @@ extension PerformanceTestSmallModel: Unboxable {
         
         id = try unboxer.unbox(key: "id")
         name = try unboxer.unbox(key: "name")
+    }
+}
+
+
+// Marshal
+
+extension PerformanceTestSmallModel: Unmarshaling {
+    init(object: MarshaledObject) throws {
+
+        id = try object.value(for: "id")
+        name = try object.value(for: "name")
     }
 }
