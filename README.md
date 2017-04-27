@@ -237,7 +237,7 @@ When it comes to mapping, **Marshal** is the fastest, followed by **Freddy** and
 So you've seen the performance tests, but what about features? 
 
  | Serpent | Freddy | Gloss | ObjectMapper | JSONCodable | Unbox | Decodable | Marshal |
----|---|---|---|---|---|---|---|---|
+---|---|---|---|---|---|---|---|
 Parses primitive types|✔️|✔️|✔️|✔️|✔️|✔️|✔️|✔️
 Parses nested objects|✔️|✔️|✔️|✔️|✔️|✔️|✔️|✔️
 Parses Enum types|✔️|❌|✔️|✔️|✔️|✔️|❌|✔️
