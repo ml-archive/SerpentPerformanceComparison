@@ -102,3 +102,33 @@ extension PerformanceTestSmallModel: Unmarshaling {
         name = try object.value(for: "name")
     }
 }
+
+
+// Codable
+
+struct DataPerformanceTestSmallModel: Codable {
+    let data: [PerformanceTestSmallModel]
+}
+
+extension PerformanceTestSmallModel: Codable {
+    enum CodableError: Swift.Error {
+        case unsupported
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case name = "name"
+    }
+    
+    init(from decoder: Swift.Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        id = try values.decode(String.self, forKey: .id)
+        name = try values.decode(String.self, forKey: .name)
+    }
+    
+    func encode(to encoder: Swift.Encoder) throws {
+        // We don't need this for the performance test.
+        throw PerformanceTestSmallModel.CodableError.unsupported
+    }
+}
+

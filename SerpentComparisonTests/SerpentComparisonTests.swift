@@ -299,5 +299,30 @@ class SerpentComparisonTests: XCTestCase {
             }
         }
     }
-
+    
+    func testCodableBig() {
+        self.measure {
+            do {
+                let decoder = JSONDecoder()
+                let _: DataPerformanceTestModel = try decoder.decode(DataPerformanceTestModel.self, from: self.largeData)
+            }
+            catch {
+                print(error)
+                XCTFail(error.localizedDescription)
+            }
+        }
+    }
+    
+    func testCodableSmall() {
+        self.measure {
+            do {
+                let decoder = JSONDecoder()
+                let _: DataPerformanceTestSmallModel = try decoder.decode(DataPerformanceTestSmallModel.self, from: self.smallData)
+            }
+            catch {
+                print(error)
+                XCTFail(error.localizedDescription)
+            }
+        }
+    }
 }
