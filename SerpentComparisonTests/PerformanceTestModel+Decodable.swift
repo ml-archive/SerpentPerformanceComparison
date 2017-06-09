@@ -8,7 +8,7 @@
 
 import Foundation
 import Decodable
-
+import protocol Decodable.Decodable
 
 // Decodable
 
