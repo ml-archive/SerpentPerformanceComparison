@@ -219,7 +219,7 @@ Decodable	   | 1.642 sec | 0.215 sec
 Marshal	   | 0.528 sec | 0.096 sec
 Codable	   | 1.233 sec<sup>1</sup> | 0.204 sec<sup>1</sup>
 
-<sup>1</sup> The measurements for Codable were last run using Xcode 9 beta 1.
+<sup>1</sup> The measurements for Codable were last made using Xcode 9 beta 1.
 
 *The tests were last run locally on device on 8 March 2017. Here's the [full output](testsOutput.log)*
  
