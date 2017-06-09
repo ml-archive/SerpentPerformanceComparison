@@ -199,7 +199,7 @@ Serpent Small Model | 0.084 sec
 
 Not too bad for 10,000 objects. 
 
-But how does it compare to other frameworks? We looked at 6 other popular frameworks to compare our results: [Freddy](https://github.com/bignerdranch/Freddy), [Gloss](https://github.com/hkellaway/Gloss), [ObjectMapper](https://github.com/Hearst-DD/ObjectMapper), [JSONCodable](https://github.com/matthewcheok/JSONCodable), [Unbox](https://github.com/JohnSundell/Unbox), [Decodable](https://github.com/Anviking/Decodable).
+But how does it compare to other frameworks? We looked at 8 other popular frameworks to compare our results: [Freddy](https://github.com/bignerdranch/Freddy), [Gloss](https://github.com/hkellaway/Gloss), [ObjectMapper](https://github.com/Hearst-DD/ObjectMapper), [JSONCodable](https://github.com/matthewcheok/JSONCodable), [Unbox](https://github.com/JohnSundell/Unbox), [Decodable](https://github.com/Anviking/Decodable), [Marshal](https://github.com/utahiosmac/Marshal) and [Codable](https://developer.apple.com/documentation/foundation/archives_and_serialization/encoding_and_decoding_custom_types) in Apples Foundation framework.
 
 Before we can compare results, we have a few issues to resolve. Freddy only supports primitive types and collections, so no `Enum`, `NSURL`, or odd cases (such as the latitude and longitude fields, which are `String` in the JSON but `Double` in our model). Others can't handle the `NSURL`. So to be fair, we'll remove those properties from the test. 
 
@@ -217,6 +217,7 @@ JSONCodable  | 4.363 sec | 0.510 sec
 Unbox		   | 3.102 sec | 0.372 sec
 Decodable	   | 1.642 sec | 0.215 sec
 Marshal	   | 0.528 sec | 0.096 sec
+Codable	   | 1.233 sec | 0.204 sec
 
 *The tests were last run locally on device on 8 March 2017. Here's the [full output](testsOutput.log)*
  
@@ -236,19 +237,20 @@ When it comes to mapping, **Marshal** is the fastest, followed by **Freddy** and
 
 So you've seen the performance tests, but what about features? 
 
- | Serpent | Freddy | Gloss | ObjectMapper | JSONCodable | Unbox | Decodable | Marshal |
----|---|---|---|---|---|---|---|
-Parses primitive types|✔️|✔️|✔️|✔️|✔️|✔️|✔️|✔️
-Parses nested objects|✔️|✔️|✔️|✔️|✔️|✔️|✔️|✔️
-Parses Enum types|✔️|❌|✔️|✔️|✔️|✔️|❌|✔️
-Parses other types (e.g. NSURL, UIColor)|✔️|❌|✔️|❌|❌|✔️|❌|partially<sup>1</sup>
-Easy protocol conformance syntax with custom operator|✔️|❌|✔️|✔️|❌|❌|✔️|✔️
-Flexible mapping function without complicated generics syntax or casting|✔️|✔️|❌|❌|❌|✔️|✔️|✔️
-Decodes without needing to handle errors|✔️|❌|✔️|✔️|❌|✔️|✔️|✔️
-Auto-generated code from Model Boiler|✔️|❌|❌|❌|❌|❌|❌|❌
-**Great Performance**|✔️|✔️|❌|❌|❌|❌|❌|✔️
+ | Serpent | Freddy | Gloss | ObjectMapper | JSONCodable | Unbox | Decodable | Marshal | Codable |
+---|---|---|---|---|---|---|---|---|
+Parses primitive types|✔️|✔️|✔️|✔️|✔️|✔️|✔️|✔️|✔️
+Parses nested objects|✔️|✔️|✔️|✔️|✔️|✔️|✔️|✔️|✔️
+Parses Enum types|✔️|❌|✔️|✔️|✔️|✔️|❌|✔️|✔️
+Parses other types (e.g. NSURL, UIColor)|✔️|❌|✔️|❌|❌|✔️|❌|partially<sup>1</sup>|partially<sup>1</sup>
+Easy protocol conformance syntax with custom operator|✔️|❌|✔️|✔️|❌|❌|✔️|✔️|✔️<sup>2</sup>
+Flexible mapping function without complicated generics syntax or casting|✔️|✔️|❌|❌|❌|✔️|✔️|✔️|✔️
+Decodes without needing to handle errors|✔️|❌|✔️|✔️|❌|✔️|✔️|✔️|✔️
+Auto-generated code from Model Boiler|✔️|❌|❌|❌|❌|❌|❌|❌|❌
+**Great Performance**|✔️|✔️|❌|❌|❌|❌|❌|✔️|❌
 
-<sup>1</sup> Marshal supports NSURL, doesn't support UIColor, but you can manually create extensions that will parse it.
+<sup>1</sup> Marshal and Codable supports NSURL, doesn't support UIColor, but you can manually create extensions that will parse it.
+<sup>2</sup> The Swift compiler can automatically synthesize the two protocols Encodable and Decodable which constitute the Codable protcool.
 
 
 ## 🏷 TL;DR
