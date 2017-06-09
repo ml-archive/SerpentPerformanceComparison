@@ -217,7 +217,9 @@ JSONCodable  | 4.363 sec | 0.510 sec
 Unbox		   | 3.102 sec | 0.372 sec
 Decodable	   | 1.642 sec | 0.215 sec
 Marshal	   | 0.528 sec | 0.096 sec
-Codable	   | 1.233 sec | 0.204 sec
+Codable	   | 1.233 sec<sup>1</sup> | 0.204 sec<sup>1</sup>
+
+<sup>1</sup> The measurements for Codable were last run using Xcode 9 beta 1.
 
 *The tests were last run locally on device on 8 March 2017. Here's the [full output](testsOutput.log)*
  
@@ -242,15 +244,15 @@ So you've seen the performance tests, but what about features?
 Parses primitive types|✔️|✔️|✔️|✔️|✔️|✔️|✔️|✔️|✔️
 Parses nested objects|✔️|✔️|✔️|✔️|✔️|✔️|✔️|✔️|✔️
 Parses Enum types|✔️|❌|✔️|✔️|✔️|✔️|❌|✔️|✔️
-Parses other types (e.g. NSURL, UIColor)|✔️|❌|✔️|❌|❌|✔️|❌|partially<sup>1</sup>|partially<sup>1</sup>
-Easy protocol conformance syntax with custom operator|✔️|❌|✔️|✔️|❌|❌|✔️|✔️|✔️<sup>2</sup>
+Parses other types (e.g. NSURL, UIColor)|✔️|❌|✔️|❌|❌|✔️|❌|partially<sup>2</sup>|partially<sup>2</sup>
+Easy protocol conformance syntax with custom operator|✔️|❌|✔️|✔️|❌|❌|✔️|✔️|✔️<sup>3</sup>
 Flexible mapping function without complicated generics syntax or casting|✔️|✔️|❌|❌|❌|✔️|✔️|✔️|✔️
 Decodes without needing to handle errors|✔️|❌|✔️|✔️|❌|✔️|✔️|✔️|✔️
 Auto-generated code from Model Boiler|✔️|❌|❌|❌|❌|❌|❌|❌|❌
 **Great Performance**|✔️|✔️|❌|❌|❌|❌|❌|✔️|❌
 
-<sup>1</sup> Marshal and Codable supports NSURL, doesn't support UIColor, but you can manually create extensions that will parse it.
-<sup>2</sup> The Swift compiler can automatically synthesize the two protocols Encodable and Decodable which constitute the Codable protcool.
+<sup>2</sup> Marshal and Codable supports NSURL, doesn't support UIColor, but you can manually create extensions that will parse it.
+<sup>3</sup> The Swift compiler can automatically synthesize the two protocols Encodable and Decodable which constitute the Codable protcool.
 
 
 ## 🏷 TL;DR
