@@ -342,3 +342,87 @@ extension Name: Unmarshaling {
 }
 
 
+// Codable
+
+struct DataPerformanceTestModel: Codable {
+    let data: [PerformanceTestModel]
+}
+
+extension PerformanceTestModel: Codable {
+    enum CodableError: Swift.Error {
+        case unsupported
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case index = "index"
+        case guid = "guid"
+        case isActive = "isActive"
+        case balance = "balance"
+        case picture = "picture"
+        case age = "age"
+        case eyeColor = "eyeColor"
+        case name = "name"
+        case company = "company"
+        case email = "email"
+        case phone = "phone"
+        case address = "address"
+        case about = "about"
+        case registered = "registered"
+        case latitude = "latitude"
+        case longitude = "longitude"
+        case greeting = "greeting"
+        case favoriteFruit = "favoriteFruit"
+    }
+    
+    init(from decoder: Swift.Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        id = try values.decode(String.self, forKey: .id)
+        index = try values.decode(Int.self, forKey: .index)
+        guid = try values.decode(String.self, forKey: .guid)
+        isActive = try values.decode(Bool.self, forKey: .isActive)
+        balance = try values.decode(String.self, forKey: .balance)
+//        picture = try values.decode(NSURL.self, forKey: .picture)
+        age = try values.decode(Int.self, forKey: .age)
+//        eyeColor = try values.decode(EyeColor.self, forKey: .eyeColor)
+        name = try values.decode(Name.self, forKey: .name)
+        company = try values.decode(String.self, forKey: .company)
+        email = try values.decode(String.self, forKey: .email)
+        phone = try values.decode(String.self, forKey: .phone)
+        address = try values.decode(String.self, forKey: .address)
+        about = try values.decode(String.self, forKey: .about)
+        registered = try values.decode(String.self, forKey: .registered)
+//        latitude = try values.decode(Double.self, forKey: .latitude)
+//        longitude = try values.decode(Double.self, forKey: .longitude)
+        greeting = try values.decode(String.self, forKey: .greeting)
+//        favoriteFruit = try? values.decode(Fruit.self, forKey: .favoriteFruit)
+    }
+    
+    func encode(to encoder: Swift.Encoder) throws {
+        // We don't need this for the performance test.
+        throw PerformanceTestModel.CodableError.unsupported
+    }
+}
+
+extension Name: Codable {
+    enum CodableError: Swift.Error {
+        case unsupported
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case first = "first"
+        case last = "last"
+    }
+    
+    init(from decoder: Swift.Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        first = try values.decode(String.self, forKey: .first)
+        last = try values.decode(String.self, forKey: .last)
+    }
+    
+    func encode(to encoder: Swift.Encoder) throws {
+        // We don't need this for the performance test.
+        throw Name.CodableError.unsupported
+    }
+}
+
